@@ -53,26 +53,8 @@ class BienController extends AbstractController
      */
     public function show(Bien $bien): Response
     {
-        //Envoie l'addresse au géocodeur Google Map pour récupérer la latitude et la longitude de l'appartement
-//        $adresse = "";
-//        $adresse .= $bien->getNumeroRue() . " ";
-//        $adresse .= $bien->getRue() . " ";
-//        if ($bien->getRueComplement()) {
-//            $adresse .= $bien->getRueComplement() . " ";
-//        }
-//        $adresse .= $bien->getVille();
-//        $adresse = str_replace(' ', '+', $adresse);
-//        $mapApiKey = "AIzaSyA6jy16mTR7Gb9ctCCYelY35TZ__gTHsTA";
-//        $url = "https://maps.googleapis.com/maps/api/geocode/json?address=" . $adresse . "&key=" . $mapApiKey;
-//        $mapgetcontent = file_get_contents($url);
-//        $mapgetcontent = json_decode($mapgetcontent);
-//        $lat = $mapgetcontent->results[0]->geometry->location->lat;
-//        $lng = $mapgetcontent->results[0]->geometry->location->lng;
-
         return $this->render('bien/show.html.twig', [
-            'bien' => $bien,
-//            'lat'=>$lat,
-//            'lng'=>$lng
+            'bien' => $bien
         ]);
     }
 

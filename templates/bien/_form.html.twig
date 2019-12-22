@@ -1,4 +1,223 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {'attr': {
+    'class': 'bienForm'
+}}) }}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-xl-6">
+            <h2>Général</h2>
+            <div class="row">
+                <div class="col-12">
+                    {{ form_row(form.titre, {
+                        'attr': {
+                            'placeholder': 'Titre de l\'annonce'
+                        },
+                        'row_attr': {
+                            'class': 'formRow largeInput'
+                        }}) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    {{ form_row(form.description, {'attr': {
+                        'placeholder': 'Decription',
+                    },
+                        'row_attr': {
+                            'class': 'formRow largeInput'
+                        }}) }}
+                </div>
+            </div>
+            <h2>Addresse</h2>
+            <div class="row">
+                <div class="col-3">
+                    {{ form_row(form.numero_rue, {
+                        'attr': {
+                            'placeholder': 'Numéro'
+                        }
+                        ,'row_attr': {
+                            'class': 'formRow largeInput'
+                        }}) }}
+                </div>
+                <div class="col-5">
+                    {{ form_row(form.rue, {
+                        'attr': {
+                            'placeholder': 'Nom de la rue'
+                        }
+                        ,'row_attr': {
+                            'class': 'formRow largeInput'
+                        }}) }}
+                </div>
+                <div class="col-4">
+                    {{ form_row(form.rue_complement, {
+                        'attr': {
+                            'placeholder': 'Complément'
+                        }
+                        ,'row_attr': {
+                            'class': 'formRow largeInput'
+                        }}) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-6">
+                    {{ form_row(form.code_postal, {
+                        'attr': {
+                            'placeholder': 'Code Postal'
+                        }
+                        ,'row_attr': {
+                            'class': 'formRow largeInput'
+                        }}) }}
+                </div>
+                <div class="col-xl-6">
+                    {{ form_row(form.ville, {
+                        'attr': {
+                            'placeholder': 'Ville'
+                        }
+                        ,'row_attr': {
+                            'class': 'formRow largeInput'
+                        }}) }}
+                </div>
+            </div>
+            <h2>Détails</h2>
+            <div class="row">
+                <div class="col-12">
+                    {{ form_row(form.prix, {
+                        'attr': {
+                            'placeholder': 'Prix (€)'
+                        }
+                        ,'row_attr': {
+                            'class': 'formRow largeInput'
+                        }}) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    {{ form_row(form.surface, {
+                        'attr': {
+                            'placeholder': 'Surface (m²)'
+                        }
+                        ,'row_attr': {
+                            'class': 'formRow largeInput'
+                        }}) }}
+                </div>
+                <div class="col-6">
+                    {{ form_row(form.surface_terrain, {
+                        'attr': {
+                            'placeholder': 'Surface du terrain (m²)'
+                        }
+                        ,'row_attr': {
+                            'class': 'formRow largeInput'
+                        }}) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    {{ form_row(form.nombre_de_pieces, {
+                        'attr': {
+                            'placeholder': 'Nombre de pièces'
+                        }
+                        ,'row_attr': {
+                            'class': 'formRow largeInput'
+                        }}) }}
+                </div>
+                <div class="col-6">
+                    {{ form_row(form.nombre_chambres, {
+                        'attr': {
+                            'placeholder': 'Nombre de chambres'
+                        }
+                        ,'row_attr': {
+                            'class': 'formRow largeInput'
+                        }}) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-6">
+                    {{ form_row(form.meuble, {'row_attr': {
+                        'class': 'formRow checkbox'
+                    }}) }}
+                </div>
+                <div class="col-xl-4 col-6">
+                    {{ form_row(form.balcon, {'row_attr': {
+                        'class': 'formRow checkbox'
+                    }}) }}
+                </div>
+                <div class="col-xl-4 col-6">
+                    {{ form_row(form.terrasse, {'row_attr': {
+                        'class': 'formRow checkbox'
+                    }}) }}
+                </div>
+                <div class="col-xl-4 col-6">
+                    {{ form_row(form.ascenseur, {'row_attr': {
+                        'class': 'formRow checkbox'
+                    }}) }}
+                </div>
+                <div class="col-xl-4 col-6">
+                    {{ form_row(form.cave, {'row_attr': {
+                        'class': 'formRow checkbox'
+                    }}) }}
+                </div>
+                <div class="col-xl-4 col-6">
+                    {{ form_row(form.parking, {'row_attr': {
+                        'class': 'formRow checkbox'
+                    }}) }}
+                </div>
+                <div class="col-xl-4 col-6">
+                    {{ form_row(form.cuisine_separee, {'row_attr': {
+                        'class': 'formRow checkbox'
+                    }}) }}
+                </div>
+                <div class="col-xl-4 col-6">
+                    {{ form_row(form.wc_separes, {'row_attr': {
+                        'class': 'formRow checkbox'
+                    }}) }}
+                </div>
+                <div class="col-xl-4 col-6">
+                    {{ form_row(form.baignoire, {'row_attr': {
+                        'class': 'formRow checkbox'
+                    }}) }}
+                </div>
+                <div class="col-xl-4 col-6">
+                    {{ form_row(form.cheminee, {'row_attr': {
+                        'class': 'formRow checkbox'
+                    }}) }}
+                </div>
+                <div class="col-xl-4 col-6">
+                    {{ form_row(form.belle_vue, {'row_attr': {
+                        'class': 'formRow checkbox'
+                    }}) }}
+                </div>
+                <div class="col-xl-4 col-6">
+                    {{ form_row(form.piscine, {'row_attr': {
+                        'class': 'formRow checkbox'
+                    }}) }}
+                </div>
+                <div class="col-xl-4 col-6">
+                    {{ form_row(form.acces_handicape, {'row_attr': {
+                        'class': 'formRow checkbox'
+                    }}) }}
+                </div>
+                <div class="col-xl-4 col-6">
+                    {{ form_row(form.colocation, {'row_attr': {
+                        'class': 'formRow checkbox'
+                    }}) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">{{ form_row(form.chauffage, {
+                        'label':'Type de chauffage',
+                        'row_attr': {
+                        'class': 'formRow selectInput'
+                    }}) }}</div>
+                <div class="col-6">{{ form_row(form.type_de_bien, {
+                        'label':'Type de bien',
+                        'row_attr': {
+                        'class': 'formRow selectInput'
+                    }}) }}</div>
+            </div>
+            <button class="btn">{{ button_label|default('Save') }}</button>
+        </div>
+    </div>
+
+</div>
+
 {{ form_end(form) }}
+
+

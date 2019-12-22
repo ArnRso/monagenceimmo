@@ -2,13 +2,13 @@ $bleu: #2d64A5;
 $montserrat: 'Montserrat', sans-serif;
 
 * {
-  margin:0;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 .img-fluid {
-  width:100%;
+  width: 100%;
   height: auto;
 }
 
@@ -20,6 +20,7 @@ header {
 
 .bien-card {
   padding: 0 20px;
+
   img {
     border-radius: 2px;
     max-height: 200px;
@@ -45,10 +46,10 @@ header {
 }
 
 .btn {
-  display:inline-block;
+  display: inline-block;
   font-family: $montserrat;
   text-decoration: none;
-  color:white;
+  color: white;
   font-weight: bold;
   border-radius: 3px;
 
@@ -63,7 +64,7 @@ header {
 
 
 #bien-single {
-  .img-container{
+  .img-container {
     height: 400px;
     background-position: center;
     background-size: cover;
@@ -79,28 +80,35 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    .pictos{
+
+    .pictos {
       color: $bleu;
+
       .fa-circle {
         font-size: 0.5rem;
         margin: 0 3px;
       }
+
       .fa-map-marker-alt {
-        margin: 0px 3px;
+        margin: 0 3px;
       }
     }
+
     h1 {
       font-size: 1.3rem;
       font-weight: normal;
     }
+
     h2 {
       font-size: 1.4rem;
       color: $bleu;
     }
+
     p.ville {
       font-weight: bold;
       font-size: 0.9rem;
     }
+
     p.prix {
       font-size: 2rem;
       font-weight: bolder;
@@ -111,13 +119,108 @@ header {
     h2 {
       font-family: $montserrat;
     }
-     p {
-       font-family: $montserrat;
-       margin-top: 15px;
-     }
+
+    p {
+      font-family: $montserrat;
+      margin-top: 15px;
+    }
+  }
+
+  .details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 70%;
+    margin: 0 auto;
+
+    .detail-container {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-width: 140px;
+
+      .picto-container {
+        background-color: $bleu;
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          height: 50%;
+          width: auto;
+        }
+      }
+
+      span {
+        margin-top: 10px;
+        font-family: $montserrat;
+      }
+    }
   }
 }
 
+.bienForm {
+  h2 {
+    margin-top: 30px;
+    font-family: $montserrat;
+  }
+  .formRow {
+
+    label {
+      font-family: $montserrat;
+    }
+
+    &.largeInput,
+    &.selectInput{
+      display: flex;
+      flex-direction: column;
+
+      label {
+        display: none;
+      }
+
+      input[type=text],
+      input[type=number],
+      select,
+      textarea{
+        margin-top: 20px;
+        font-family: $montserrat;
+        padding-left: 10px;
+        width: 100%;
+        height: 50px;
+        font-size: 20px;
+        border-radius: 5px;
+        border:1px solid lightgray;
+      }
+
+      textarea {
+        height:200px;
+        padding-top: 10px;
+      }
+    }
+
+    &.selectInput label{
+      display: block ;
+    }
+
+    &.selectInput select {
+      margin-top: 10px;
+    }
+
+    &.checkbox {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+    }
+
+  }
+}
 
 
 // FOOTER -----------------------

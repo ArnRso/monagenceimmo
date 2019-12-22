@@ -29,13 +29,137 @@
             </div>
         </div>
         <div class="row justify-content-xl-center mt-xl-5 description">
-            <div class="col-xl-10">
-                <h2>Détails de ce bien</h2>
+            <div class="col-xl-10 px-0">
+                <h2>Description du bien</h2>
                 <p>
                     {{ bien.description | raw }}
                 </p>
             </div>
-            <div class="col-xl-8" id="map" style="height: 400px; width:100%"></div>
+        </div>
+
+        <div class="details">
+            {% if bien.cheminee %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/cheminee.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Cheminée</span>
+                </div>
+            {% endif %}
+            {% if bien.belleVue %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/belle-vue.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Belle Vue</span>
+                </div>
+            {% endif %}
+            {% if bien.balcon %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/balcon.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Balcon</span>
+                </div>
+            {% endif %}
+            {% if bien.piscine %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/piscine.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Piscine</span>
+                </div>
+            {% endif %}
+            {% if bien.ascenseur %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/ascenseur.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Ascenseur</span>
+                </div>
+            {% endif %}
+            {% if bien.terrasse %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/terrasse.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Terrasse</span>
+                </div>
+            {% endif %}
+            {% if bien.cave %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/cave.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Cave</span>
+                </div>
+            {% endif %}
+            {% if bien.parking %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/parking.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Parking</span>
+                </div>
+            {% endif %}
+            {% if bien.accesHandicape %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/handicap.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Accessible PMR</span>
+                </div>
+            {% endif %}
+            {% if bien.baignoire %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/baignoire.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Baignoire</span>
+                </div>
+            {% endif %}
+            {% if bien.cuisineSeparee %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/cuisineseparee.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Cuisine séparée</span>
+                </div>
+            {% endif %}
+            {% if bien.meuble %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/meuble.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Meublé</span>
+                </div>
+            {% else %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/meuble.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Non-Meublé</span>
+                </div>
+            {% endif %}
+            {% if bien.colocation %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/colocation.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Colocation</span>
+                </div>
+            {% endif %}
+            {% if bien.wcSepares %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/wcsepares.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>WC séparés</span>
+                </div>
+            {% endif %}
+        </div>
+        <div class="row justify-content-xl-center mt-xl-5">
+            <div class="col-xl-11 mt-xl-5" id="map" style="width:100%; height:400px; display: none"></div>
         </div>
     </div>
 
@@ -51,7 +175,7 @@
             var address = "{{ bien.numeroRue }} {{ bien.rue }}{% if bien.rueComplement is not null %} {{ bien.rueComplement }}{% endif %} {{ bien.ville }}";
             address = address.split(' ');
             address = address.join('+');
-            var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + apiKey;
+            var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + escape(address) + "&key=" + apiKey;
             axios.get(url)
                 .then(function (response) {
                     // handle success
@@ -60,6 +184,7 @@
                     // The location of the appartement
                     var appartement = {lat: lat, lng: lng};
                     // The map, centered at the appartement
+                    document.getElementById('map').style.display = "block";
                     var map = new google.maps.Map(
                         document.getElementById('map'), {zoom: 13, center: appartement});
                     // The marker, positioned at the appartement
