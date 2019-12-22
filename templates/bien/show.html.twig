@@ -5,8 +5,8 @@
 {% block body %}
     <div class="container-fluid my-xl-5" id="bien-single">
         <div class="row d-flex justify-content-xl-center">
-            <div class="col-xl-6 img-container" style="background-image: url('{{ bien.images}}')"></div>
-            <div class="col-xl-4 info-container" >
+            <div class="col-xl-6 img-container" style="background-image: url('{{ bien.images }}')"></div>
+            <div class="col-xl-4 info-container">
                 <div class="pictos d-flex align-items-center justify-content-center">
                     <i class="fas fa-circle"></i>
                     <i class="fas fa-circle"></i>
@@ -32,7 +32,7 @@
             <div class="col-xl-10">
                 <h2>Détails de ce bien</h2>
                 <p>
-                {{ bien.description | raw}}
+                    {{ bien.description | raw }}
                 </p>
             </div>
             <div class="col-xl-8" id="map" style="height: 400px; width:100%"></div>
@@ -42,19 +42,37 @@
 {% endblock %}
 
 {% block javascripts %}
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-        var lat = parseFloat("{{ lat }}");
-        var lng = parseFloat("{{ lng }}");
         // Initialize and add the map
         function initMap() {
-            // The location of the appartement
-            var appartement = {lat: lat, lng: lng};
-            // The map, centered at the appartement
-            var map = new google.maps.Map(
-                document.getElementById('map'), {zoom: 13, center: appartement});
-            // The marker, positioned at the appartement
-            var marker = new google.maps.Marker({position: appartement, map: map});
+
+            var apiKey = "AIzaSyA6jy16mTR7Gb9ctCCYelY35TZ__gTHsTA";
+            var address = "{{ bien.numeroRue }} {{ bien.rue }}{% if bien.rueComplement is not null %} {{ bien.rueComplement }}{% endif %} {{ bien.ville }}";
+            address = address.split(' ');
+            address = address.join('+');
+            var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + apiKey;
+            axios.get(url)
+                .then(function (response) {
+                    // handle success
+                    var lat = response.data.results[0].geometry.location.lat;
+                    var lng = response.data.results[0].geometry.location.lng;
+                    // The location of the appartement
+                    var appartement = {lat: lat, lng: lng};
+                    // The map, centered at the appartement
+                    var map = new google.maps.Map(
+                        document.getElementById('map'), {zoom: 13, center: appartement});
+                    // The marker, positioned at the appartement
+                    var marker = new google.maps.Marker({position: appartement, map: map});
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+                .finally(function () {
+                    // always executed
+                });
+
         }
     </script>
     <!--Load the API from the specified URL
