@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bien index{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid px-xl-5 ">
+        <div class="row">
+            {% for bien in biens %}
+                <div class="col-xl-4 flex bien-card px-xl-5 mt-xl-5 mb-xl-5">
+                    <div class="thumbnail-container">
+                        <img src="{{bien.images}}"
+                             alt="" class="img-fluid">
+                    </div>
+                    <h2 class="mt-xl-2">{{ bien.ville }} {{ bien.codePostal }} - {{ bien.surface }}m²</h2>
+                    <h3 class="mt-xl-2">{{ bien.prix }}€</h3>
+                    <p class="mt-xl-2">{{ bien.description | easyadmin_truncate(150) }}</p>
+                    <div class="row mt-xl-3">
+                        <div class="col-xl-4">
+                            <a href="" class="px-4 py-2 d-xl-inline-block btn favoris">Favoris</a>
+                        </div>
+                        <div class="col-xl-5">
+                            <a href="{{ path("bien_show", {"id": bien.id}) }}" class="px-4 py-2 d-xl-inline-block btn infos">+ d'infos</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    <a href="{{ path('bien_new') }}" class="">Create new</a>
+{% endblock %}

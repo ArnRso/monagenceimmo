@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.img-fluid {
+  width: 100%;
+  height: auto;
+}
+
+header {
+  background-color: #2d64A5;
+}
+
+.bien-card {
+  padding: 0 20px;
+}
+.bien-card img {
+  border-radius: 2px;
+  max-height: 200px;
+  overflow: hidden;
+}
+.bien-card h2 {
+  color: #2d64A5;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+.bien-card h3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.bien-card p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
+
+.btn {
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 3px;
+}
+.btn.favoris {
+  background-color: #2d64A5;
+}
+.btn.infos {
+  background-color: black;
+}
+
+#bien-single .img-container {
+  height: 400px;
+  background-position: center;
+  background-size: cover;
+}
+#bien-single .info-container {
+  background-image: url("../img/map-grayscale.svg");
+  background-color: #fafafa;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#bien-single .info-container .pictos {
+  color: #2d64A5;
+}
+#bien-single .info-container .pictos .fa-circle {
+  font-size: 0.5rem;
+  margin: 0 3px;
+}
+#bien-single .info-container .pictos .fa-map-marker-alt {
+  margin: 0px 3px;
+}
+#bien-single .info-container h1 {
+  font-size: 1.3rem;
+  font-weight: normal;
+}
+#bien-single .info-container h2 {
+  font-size: 1.4rem;
+  color: #2d64A5;
+}
+#bien-single .info-container p.ville {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+#bien-single .info-container p.prix {
+  font-size: 2rem;
+  font-weight: bolder;
+}
+#bien-single .description h2 {
+  font-family: "Montserrat", sans-serif;
+}
+#bien-single .description p {
+  font-family: "Montserrat", sans-serif;
+  margin-top: 15px;
+}
+
+footer {
+  background-color: #2d64A5;
+}
+
+/*# sourceMappingURL=style.css.map */

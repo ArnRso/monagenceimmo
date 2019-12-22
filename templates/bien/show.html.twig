@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bien{% endblock %}
+
+{% block body %}
+    <div class="container-fluid my-xl-5" id="bien-single">
+        <div class="row d-flex justify-content-xl-center">
+            <div class="col-xl-6 img-container" style="background-image: url('{{ bien.images}}')"></div>
+            <div class="col-xl-4 info-container" >
+                <div class="pictos d-flex align-items-center justify-content-center">
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                </div>
+                <h1 class="mt-xl-3">{{ bien.titre }}</h1>
+                <h2 class="mt-xl-2">{{ bien.nombreDePieces }} pièce - {{ bien.surface }}m²</h2>
+                <p class="ville mt-xl-2">{{ bien.ville }}</p>
+                <p class="prix mt-xl-5">{{ bien.prix }} € / mois</p>
+                <div class="btn-container mt-xl-4">
+                    <a href="" class="btn infos px-4 py-2">Partager</a>
+                    <a href="" class="btn favoris px-4 py-2">Favoris</a>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-xl-center mt-xl-5 description">
+            <div class="col-xl-10">
+                <h2>Détails de ce bien</h2>
+                <p>
+                {{ bien.description | raw}}
+                </p>
+            </div>
+            <div class="col-xl-8" id="map" style="height: 400px; width:100%"></div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+        var lat = parseFloat("{{ lat }}");
+        var lng = parseFloat("{{ lng }}");
+        // Initialize and add the map
+        function initMap() {
+            // The location of the appartement
+            var appartement = {lat: lat, lng: lng};
+            // The map, centered at the appartement
+            var map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 13, center: appartement});
+            // The marker, positioned at the appartement
+            var marker = new google.maps.Marker({position: appartement, map: map});
+        }
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6jy16mTR7Gb9ctCCYelY35TZ__gTHsTA&callback=initMap">
+    </script>
+{% endblock %}
