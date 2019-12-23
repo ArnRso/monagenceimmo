@@ -21,7 +21,27 @@ class BienController extends AbstractController
     public function index(BienRepository $bienRepository): Response
     {
         return $this->render('bien/index.html.twig', [
-            'biens' => $bienRepository->findAll(),
+            'biens' => [] //$bienRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/recherche", name="bien_recherche_simple")
+     */
+    public function simpleSearch(Request $request, BienRepository $bienRepository): Response
+    {
+        $localisation = $request->query->get('localisation');
+        if (strlen($localisation) == 0) {
+            $localisation = "";
+        }
+        $prixMax = $request->query->get('prixMax');
+        if (strlen($prixMax) == 0) {
+            $prixMax = 9999999999;
+        }
+        $surfaceMin = $request->query->get('surfaceMin');
+        $biens = $bienRepository->simpleSearch($localisation, $prixMax, $surfaceMin);
+        return $this->render('bien/index.html.twig', [
+            'biens' => $biens
         ]);
     }
 

@@ -60,7 +60,7 @@
                 <div class="col-xl-6">
                     {{ form_row(form.code_postal, {
                         'attr': {
-                            'placeholder': 'Code Postal'
+                            'placeholder': 'Code postal'
                         }
                         ,'row_attr': {
                             'class': 'formRow largeInput'
@@ -128,9 +128,9 @@
                         }}) }}
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-xl-4 col-6">
-                    {{ form_row(form.meuble, {'row_attr': {
+                    {{ form_row(form.meuble, {'label': 'Meublé','row_attr': {
                         'class': 'formRow checkbox'
                     }}) }}
                 </div>
@@ -200,19 +200,23 @@
                     }}) }}
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-6">{{ form_row(form.chauffage, {
                         'label':'Type de chauffage',
+                        'placeholder': '-- Type de chauffage --',
                         'row_attr': {
-                        'class': 'formRow selectInput'
-                    }}) }}</div>
+                            'class': 'formRow selectInput'
+                        }}) }}</div>
                 <div class="col-6">{{ form_row(form.type_de_bien, {
                         'label':'Type de bien',
+                        'placeholder': '-- Type de bien --',
                         'row_attr': {
-                        'class': 'formRow selectInput'
-                    }}) }}</div>
+                            'class': 'formRow selectInput'
+                        }}) }}</div>
             </div>
-            <button class="btn">{{ button_label|default('Save') }}</button>
+            <div class="row justify-content-center mt-5">
+                    <button class="btn" type="submit">{{ button_label|default('Save') }}</button>
+            </div>
         </div>
     </div>
 

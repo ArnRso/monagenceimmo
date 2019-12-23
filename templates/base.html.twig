@@ -4,15 +4,32 @@
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
     {% block stylesheets %}{% endblock %}
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i&display=swap"
+          rel="stylesheet">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+          integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous"/>
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 </head>
 <body>
-<header class="py-xl-5">
-    <a href="{{ path('bien_index') }}">Tous les biens</a>
+<header class="">
+    <div class="left-container">
+        <div class="logo-container">
+            <img src="{{ asset('assets/img/logo_blanc.png') }}" alt="" class="img-fluid">
+        </div>
+        <nav>
+            <a href="{{ path('bien_index') }}">Trouver une location</a>
+            <a href="{{ path('bien_new') }}">Déposer mon annonce</a>
+            <a href="">Mes Favoris</a>
+        </nav>
+
+    </div>
+
+    <div class="profil">
+        <a href="" class="btn rouge">Se connecter</a>
+        <a href="" class="btn blanc">S'inscrire</a>
+    </div>
 </header>
 {% block body %}{% endblock %}
 <footer class="py-xl-5"></footer>

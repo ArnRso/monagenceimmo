@@ -14,6 +14,19 @@ use Doctrine\Common\Persistence\ManagerRegistry;
  */
 class BienRepository extends ServiceEntityRepository
 {
+    public function simpleSearch($localisation = "", $prixMax = 9999999999999, $surfaceMin = -1)
+    {
+        $query = $this->createQueryBuilder('bien')
+            ->where('bien.ville LIKE :ville')
+            ->setParameter('ville', '%'. $localisation . '%')
+            ->andWhere('bien.prix < :prixMax')
+            ->setParameter('prixMax', intval($prixMax))
+            ->andWhere('bien.surface > :surfaceMin')
+            ->setParameter('surfaceMin', intval($surfaceMin))
+            ->getQuery()
+            ->getResult();
+        return $query;
+    }
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Bien::class);

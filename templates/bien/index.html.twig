@@ -3,24 +3,66 @@
 {% block title %}Bien index{% endblock %}
 
 {% block body %}
+    <div class="container-fluid search-section"
+         style="background-image: url('{{ asset('assets/img/mon-agence-immo.jpg') }}')">
+        <div class="search-div">
+            <form action="{{ path('bien_recherche_simple') }}" method="GET">
+                <div class="form-div">
+                    <input type="text" placeholder="Ville ou code postal" name="localisation"
+                            {% if app.request.query.get("localisation") %}
+                            value="{{ app.request.query.get("localisation") }}"
+                            {% endif %}>
+                </div>
+                <div class="form-div">
+                    <input type="text" placeholder="Prix max." name="prixMax"
+                            {% if app.request.query.get("prixMax") %}
+                        value="{{ app.request.query.get("prixMax") }}"
+                            {% endif %}>
+                    <input type="text" placeholder="Surface min." name="surfaceMin"
+                            {% if app.request.query.get("surfaceMin") %}
+                        value="{{ app.request.query.get("surfaceMin") }}"
+                            {% endif %}>
+                </div>
+                <div class="form-div checkboxes-container">
+                    <div class="checkbox-container">
+                        <label for="maison">Maison</label>
+                        <input type="checkbox" id="maison" name="maison">
+                    </div>
+                    <div class="checkbox-container">
+                        <label for="colocation">Colocation</label>
+                        <input type="checkbox" id="colocation" name="colocation">
+                    </div>
+                    <div class="checkbox-container">
+                        <label for="parking">Parking</label>
+                        <input type="checkbox" name="parking" id="parking">
+                    </div>
+                    <div class="checkbox-container">
+                        <label for="balcon">Balcon</label>
+                        <input type="checkbox" id="balcon" name="balcon">
+                    </div>
+                </div>
+                <button type="submit">Recherche</button>
+            </form>
 
-    <div class="container-fluid px-xl-5 ">
+        </div>
+    </div>
+    <div class="container-fluid px-xl-5">
+
         <div class="row">
             {% for bien in biens %}
                 <div class="col-xl-4 flex bien-card px-xl-5 mt-xl-5 mb-xl-5">
-                    <div class="thumbnail-container">
-                        <img src="{{bien.images}}"
-                             alt="" class="img-fluid">
+                    <div class="thumbnail-container" style="background-image: url('{{ bien.images }}');">
+
                     </div>
                     <h2 class="mt-xl-2">{{ bien.ville }} {{ bien.codePostal }} - {{ bien.surface }}m²</h2>
                     <h3 class="mt-xl-2">{{ bien.prix }}€</h3>
-                    <p class="mt-xl-2">{{ bien.description | easyadmin_truncate(150) }}</p>
+                    <p class="mt-xl-2">{{ bien.description | easyadmin_truncate(150) | raw }}</p>
                     <div class="row mt-xl-3">
                         <div class="col-xl-4">
-                            <a href="" class="px-4 py-2 d-xl-inline-block btn favoris">Favoris</a>
+                            <a href="" class="btn bleu">Favoris</a>
                         </div>
                         <div class="col-xl-5">
-                            <a href="{{ path("bien_show", {"id": bien.id}) }}" class="px-4 py-2 d-xl-inline-block btn infos">+ d'infos</a>
+                            <a href="{{ path("bien_show", {"id": bien.id}) }}" class="btn noir">+ d'infos</a>
                         </div>
                     </div>
                 </div>
@@ -28,5 +70,4 @@
         </div>
 
     </div>
-    <a href="{{ path('bien_new') }}" class="">Create new</a>
 {% endblock %}

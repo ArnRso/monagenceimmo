@@ -175,7 +175,7 @@
             var address = "{{ bien.numeroRue }} {{ bien.rue }}{% if bien.rueComplement is not null %} {{ bien.rueComplement }}{% endif %} {{ bien.ville }}";
             address = address.split(' ');
             address = address.join('+');
-            var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + escape(address) + "&key=" + apiKey;
+            var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + encodeURI(escape(address)) + "&key=" + apiKey;
             axios.get(url)
                 .then(function (response) {
                     // handle success

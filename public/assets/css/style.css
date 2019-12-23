@@ -11,15 +11,98 @@
 
 header {
   background-color: #2d64A5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header .left-container {
+  display: flex;
+  align-items: center;
+}
+header .left-container .logo-container {
+  width: 100px;
+  padding: 10px;
+}
+header .left-container nav {
+  margin-left: 30px;
+}
+header .left-container nav a {
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 0 30px;
+  transition: border-bottom 0.3s;
+}
+header .left-container nav a:hover {
+  border-bottom: 3px solid #FF5858;
+}
+header .profil {
+  margin-right: 30px;
+}
+header .profil .btn {
+  border-radius: 50px;
+}
+header .profil .btn.blanc {
+  margin-left: 15px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.search-section {
+  height: 600px;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-section .search-div {
+  border-radius: 20px;
+  background-color: white;
+  padding: 30px;
+}
+.search-section .search-div .form-div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.search-section .search-div .form-div input[type=text] {
+  flex: 1;
+  margin: 20px 10px 0;
+  font-family: "Montserrat", sans-serif;
+  padding-left: 10px;
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f6f6f6;
+}
+.search-section .search-div .form-div.checkboxes-container {
+  padding: 0 10px;
+}
+.search-section .search-div .form-div.checkboxes-container .checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+.search-section .search-div .form-div.checkboxes-container .checkbox-container label {
+  font-family: "Montserrat", sans-serif;
+  margin-right: 10px;
+}
+.search-section .search-div .form-div.checkboxes-container .checkbox-container input {
+  height: 20px;
+  width: 20px;
 }
 
 .bien-card {
   padding: 0 20px;
 }
-.bien-card img {
+.bien-card .thumbnail-container {
   border-radius: 2px;
-  max-height: 200px;
-  overflow: hidden;
+  height: 200px;
+  background-position: center;
+  background-size: cover;
 }
 .bien-card h2 {
   color: #2d64A5;
@@ -43,12 +126,26 @@ header {
   color: white;
   font-weight: bold;
   border-radius: 3px;
+  padding: 10px 25px;
+  border: 2px solid;
 }
-.btn.favoris {
+.btn.bleu {
   background-color: #2d64A5;
+  border-color: #2d64A5;
 }
-.btn.infos {
-  background-color: black;
+.btn.noir {
+  background-color: #101010;
+  color: white;
+  border-color: #101010;
+}
+.btn.rouge {
+  background-color: #FF5858;
+  border-color: #FF5858;
+}
+.btn.blanc {
+  background-color: white;
+  color: white;
+  border-color: white;
 }
 
 #bien-single .img-container {
@@ -161,14 +258,12 @@ header {
   height: 50px;
   font-size: 20px;
   border-radius: 5px;
-  border: 1px solid lightgray;
+  border: none;
+  background-color: #f6f6f6;
 }
 .bienForm .formRow.largeInput textarea, .bienForm .formRow.selectInput textarea {
   height: 200px;
   padding-top: 10px;
-}
-.bienForm .formRow.selectInput label {
-  display: block;
 }
 .bienForm .formRow.selectInput select {
   margin-top: 10px;
@@ -176,8 +271,22 @@ header {
 .bienForm .formRow.checkbox {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 10px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+.bienForm .formRow.checkbox input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+  margin-right: 30px;
+  margin-left: 10px;
+}
+.bienForm .btn {
+  padding: 15px 50px;
+  box-shadow: none;
+  border: 2px solid #2d64A5;
+  background-color: #2d64A5;
+  border-radius: 5px;
+  font-size: 1.2rem;
 }
 
 footer {
