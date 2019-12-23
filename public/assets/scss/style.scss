@@ -1,4 +1,6 @@
+//$bleu: #4d7cfe;
 $bleu: #2d64A5;
+$bleusecondaire:#F5F9FC;
 $rouge: #FF5858;
 $montserrat: 'Montserrat', sans-serif;
 
@@ -126,7 +128,9 @@ header {
     background-position: center;
     background-size: cover;
   }
-
+  a {
+    text-decoration: none;
+  }
   h2 {
     color: $bleu;
     font-family: $montserrat;
@@ -188,7 +192,7 @@ header {
 
   .info-container {
     background-image: url("../img/map-grayscale.svg");
-    background-color: #fafafa;
+    background-color: $bleusecondaire;
     background-size: cover;
     background-position: center;
     text-align: center;

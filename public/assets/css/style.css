@@ -104,6 +104,9 @@ header .profil .btn.blanc {
   background-position: center;
   background-size: cover;
 }
+.bien-card a {
+  text-decoration: none;
+}
 .bien-card h2 {
   color: #2d64A5;
   font-family: "Montserrat", sans-serif;
@@ -155,7 +158,7 @@ header .profil .btn.blanc {
 }
 #bien-single .info-container {
   background-image: url("../img/map-grayscale.svg");
-  background-color: #fafafa;
+  background-color: #F5F9FC;
   background-size: cover;
   background-position: center;
   text-align: center;
