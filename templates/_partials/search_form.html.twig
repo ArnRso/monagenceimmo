@@ -1,0 +1,27 @@
+<form action="{{ path('bien_recherche_simple') }}" method="GET">
+    <div class="form-inside-div">
+        <input type="text" placeholder="Ville" name="localisation"
+                {% if app.request.query.get("localisation") %}
+            value="{{ app.request.query.get("localisation") }}"
+                {% endif %}>
+        <input type="text" placeholder="Prix max." name="prixMax"
+                {% if app.request.query.get("prixMax") %}
+            value="{{ app.request.query.get("prixMax") }}"
+                {% endif %}>
+        <input type="text" placeholder="Surface min." name="surfaceMin"
+                {% if app.request.query.get("surfaceMin") %}
+            value="{{ app.request.query.get("surfaceMin") }}"
+                {% endif %}>
+        <select name="bonus" id="bonus">
+            <option value="" disabled selected>Bonus</option>
+            <option value="maison">Maison</option>
+            <option value="colocation">Colocation</option>
+            <option value="parking">Parking</option>
+            <option value="balcon">Balcon</option>
+        </select>
+        <a href="">Plus de critères</a>
+    </div>
+
+
+    <button type="submit">Recherche</button>
+</form>

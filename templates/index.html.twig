@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid search-section index"
+         style="background-image: url('{{ asset('assets/img/mon-agence-immo.jpg') }}')">
+        <div class="search-div">
+            {% include '_partials/search_form.html.twig' %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

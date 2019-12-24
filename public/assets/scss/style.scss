@@ -1,6 +1,6 @@
 //$bleu: #4d7cfe;
 $bleu: #2d64A5;
-$bleusecondaire:#F5F9FC;
+$bleusecondaire: #F5F9FC;
 $rouge: #FF5858;
 $montserrat: 'Montserrat', sans-serif;
 
@@ -65,57 +65,84 @@ header {
 }
 
 .search-section {
-  height: 600px;
-  background-position: center;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  &.index {
+    padding: 300px 0;
+    background-position: center;
+    background-size: cover;
+  }
 
-  .search-div {
-    border-radius: 20px;
-    background-color: white;
-    padding: 30px;
 
-    .form-div {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
 
-      input[type=text] {
-        flex: 1;
-        margin: 20px 10px 0;
-        font-family: $montserrat;
-        padding-left: 10px;
-        width: 100%;
-        height: 50px;
-        font-size: 20px;
-        border-radius: 5px;
-        border: none;
-        background-color: #f6f6f6;
+  form {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    margin: 0 auto;
+
+  }
+
+  .form-inside-div {
+    display: flex;
+    border-radius: 50px;
+    overflow: hidden;
+
+    input, select, button, a {
+      height: 58px;
+      font-size: 18px;
+      font-family: $montserrat;
+      min-width: 20%;
+      max-width: 20%;
+      background-color: #f6f6f6;
+      &:focus {
+        outline:none;
       }
+    }
 
-      &.checkboxes-container {
-        padding: 0 10px;
-        .checkbox-container {
-          display: flex;
-          align-items: center;
-          margin-top: 20px;
+    input {
+      padding-left: 20px;
+      border: none;
+    }
 
-          label {
-            font-family: $montserrat;
-            margin-right: 10px;
-          }
+    input[name=localisation] {
+    }
 
-          input {
-            height: 20px;
-            width: 20px;
-          }
-        }
-      }
+    input[name=prixMax] {
+      border-left: 1px solid gray;
+    }
+
+    input[name=surfaceMin] {
+      border-left: 1px solid gray;
+      border-right: 1px solid gray;
 
     }
+
+    select {
+      border: none;
+      padding-left: 20px;
+    }
+
+    a {
+      border-left: 1px solid gray;
+      line-height: 58px;
+      text-align: center;
+      display: inline-block;
+      text-decoration: none;
+      color: white;
+      background-color: $bleu;
+    }
   }
+
+  button {
+    height: 58px;
+    background-color: $rouge;
+    color:white;
+    font-family: $montserrat;
+    border:none;
+    border-radius: 30px;
+    padding: 0 30px;
+    font-size: 20px;
+  }
+
 }
 
 // bien/index.html.twig----------------
@@ -124,13 +151,15 @@ header {
 
   .thumbnail-container {
     border-radius: 2px;
-    height:200px;
+    height: 200px;
     background-position: center;
     background-size: cover;
   }
+
   a {
     text-decoration: none;
   }
+
   h2 {
     color: $bleu;
     font-family: $montserrat;
