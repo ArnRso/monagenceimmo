@@ -2,10 +2,23 @@
 
 {% block title %}Bien{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/splide-1.2.5/dist/css/splide.min.css') }}">
+{% endblock %}
 {% block body %}
     <div class="container-fluid my-xl-5" id="bien-single">
         <div class="row d-flex justify-content-xl-center">
-            <div class="col-xl-6 img-container" style="background-image: url('{{ bien.images }}')"></div>
+            <div class="col-xl-6 img-container splide" id="image-slider">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        {% for image in bien.images %}
+                            <li class="splide__slide">
+                                <img src="{{ asset('assets/uploaded_images/') ~ image }}" alt="">
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
             <div class="col-xl-4 info-container">
                 <div class="pictos d-flex align-items-center justify-content-center">
                     <i class="fas fa-circle"></i>
@@ -208,4 +221,17 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6jy16mTR7Gb9ctCCYelY35TZ__gTHsTA&callback=initMap">
     </script>
+    <script src="{{ asset('assets/splide-1.2.5/dist/js/splide.min.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Splide('#image-slider', {
+                'cover' : true,
+                'heightRatio': 0.6,
+                'type': 'loop'
+            }).mount();
+        });
+    </script>
+
+
 {% endblock %}
+

@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Bien;
 use App\Form\BienType;
 use App\Repository\BienRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -57,6 +59,24 @@ class BienController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // stock toutes les images envoyées par le formulaire dans $images
+            $images = $request->files->get('bien')['images'];
+            // boucle sur chacune des images
+            foreach ($images as $image) {
+                // stock le dossier de destination défini dans config/services.yaml
+                $upload_directory = $this->getParameter('uploads_directory');
+                // génère un nom unique pour chauque photo
+                $filename = md5(uniqid()) . '.' . $image->guessExtension();
+                // déplace le fichier dans le dossier désiré
+                $image->move(
+                // dossier de destination
+                    $upload_directory,
+                    // nom du fichier
+                    $filename
+                );
+                // Ajoute le nom du fichier image à l'array Images dans la BDD
+                $bien->addImages($filename);
+            }
             $bien->setAuthor($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($bien);
@@ -90,6 +110,24 @@ class BienController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // stock toutes les images envoyées par le formulaire dans $images
+            $images = $request->files->get('article')['images'];
+            // boucle sur chacune des images
+            foreach ($images as $image) {
+                // stock le dossier de destination défini dans config/services.yaml
+                $upload_directory = $this->getParameter('uploads_directory');
+                // génère un nom unique pour chauque photo
+                $filename = md5(uniqid()) . '.' . $image->guessExtension();
+                // déplace le fichier dans le dossier désiré
+                $image->move(
+                // dossier de destination
+                    $upload_directory,
+                    // nom du fichier
+                    $filename
+                );
+                // Ajoute le nom du fichier image à l'array Images dans la BDD
+                $bien->addImages($filename);
+            }
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('bien_index');
@@ -113,5 +151,25 @@ class BienController extends AbstractController
         }
 
         return $this->redirectToRoute('bien_index');
+    }
+
+    /**
+     * Permet de supprimer une image en particulier d'un article donné
+     * @Route("/{id}/img/delete/{id_image}", name="bien_image_delete")
+     * @param $id
+     * @param $id_image
+     * @param EntityManagerInterface $entityManager
+     * @param BienRepository $bienRepository
+     * @return RedirectResponse
+     */
+    public function deleteImage($id, $id_image, EntityManagerInterface $entityManager, BienRepository $bienRepository)
+    {
+        $bien = $bienRepository->find($id);
+        $images = $bien->getImages();
+        array_splice($images, $id_image, 1);
+        $bien->setImages($images);
+        $entityManager->persist($bien);
+        $entityManager->flush();
+        return $this->redirectToRoute('bien_edit', ['id' => $id]);
     }
 }

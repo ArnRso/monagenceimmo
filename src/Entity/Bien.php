@@ -171,9 +171,9 @@ class Bien
     private $created_at;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="array")
      */
-    private $images;
+    private $images = [];
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="biens")
@@ -534,15 +534,20 @@ class Bien
         return $this;
     }
 
-    public function getImages(): ?string
+    public function getImages(): ?array
     {
         return $this->images;
     }
 
-    public function setImages(?string $images): self
+    public function setImages(array $images): self
     {
         $this->images = $images;
+        return $this;
+    }
 
+    public function addImages(string $image): self
+    {
+        $this->images[] = $image;
         return $this;
     }
 

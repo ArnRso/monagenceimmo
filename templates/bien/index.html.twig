@@ -14,7 +14,7 @@
             {% for bien in biens %}
                 <div class="col-xl-4 flex bien-card px-xl-5 mt-xl-5 mb-xl-5">
                     <a href="{{ path("bien_show", {"id": bien.id}) }}">
-                        <div class="thumbnail-container" style="background-image: url('{{ bien.images }}');">
+                        <div class="thumbnail-container" style="background-image: url('{{ asset('assets/uploaded_images/' ~ bien.images[0]) }}');">
 
                         </div>
                     </a>

@@ -128,6 +128,15 @@
                         }}) }}
                 </div>
             </div>
+            {% for image in bien.images %}
+                <div style="width:100px; height:100px;">
+                    <img src="{{ asset('assets/uploaded_images') ~ '/'~image }}"
+                         style="width:100%; height:auto;">
+                    <a href="{{ path('bien_image_delete', {'id_image': loop.index0, 'id': article.id}) }}">supprimer
+                        l'image</a>
+                </div>
+
+            {% endfor %}
             <div class="row mt-5">
                 <div class="col-xl-4 col-6">
                     {{ form_row(form.meuble, {'label': 'Meublé','row_attr': {
@@ -215,7 +224,7 @@
                         }}) }}</div>
             </div>
             <div class="row justify-content-center mt-5">
-                    <button class="btn" type="submit">{{ button_label|default('Save') }}</button>
+                <button class="btn" type="submit">{{ button_label|default('Save') }}</button>
             </div>
         </div>
     </div>
