@@ -24,7 +24,9 @@ class BienType extends AbstractType
             ])
             ->add('numero_rue', IntegerType::class)
             ->add('rue', TextType::class)
-            ->add('rue_complement', TextType::class)
+            ->add('rue_complement', TextType::class, [
+                'required'=>false
+            ])
             ->add('code_postal', IntegerType::class)
             ->add('ville', TextType::class)
             ->add('surface', IntegerType::class)
@@ -32,20 +34,48 @@ class BienType extends AbstractType
             ->add('nombre_chambres', IntegerType::class)
             ->add('surface_terrain', IntegerType::class)
             ->add('prix', IntegerType::class)
-            ->add('cheminee', CheckboxType::class)
-            ->add('belle_vue', CheckboxType::class)
-            ->add('balcon', CheckboxType::class)
-            ->add('piscine', CheckboxType::class)
-            ->add('ascenseur', CheckboxType::class)
-            ->add('terrasse', CheckboxType::class)
-            ->add('cave', CheckboxType::class)
-            ->add('parking', CheckboxType::class)
-            ->add('acces_handicape', CheckboxType::class)
-            ->add('baignoire', CheckboxType::class)
-            ->add('cuisine_separee', CheckboxType::class)
-            ->add('meuble', CheckboxType::class)
-            ->add('colocation', CheckboxType::class)
-            ->add('wc_separes', CheckboxType::class)
+            ->add('cheminee', CheckboxType::class, [
+                'required' => false,
+            ])
+            ->add('belle_vue', CheckboxType::class, [
+                'required' => false,
+            ])
+            ->add('balcon', CheckboxType::class, [
+                'required' => false,
+            ])
+            ->add('piscine', CheckboxType::class, [
+                'required' => false,
+            ])
+            ->add('ascenseur', CheckboxType::class, [
+                'required' => false,
+            ])
+            ->add('terrasse', CheckboxType::class, [
+                'required' => false,
+            ])
+            ->add('cave', CheckboxType::class, [
+                'required' => false,
+            ])
+            ->add('parking', CheckboxType::class, [
+                'required' => false,
+            ])
+            ->add('acces_handicape', CheckboxType::class, [
+                'required' => false,
+            ])
+            ->add('baignoire', CheckboxType::class, [
+                'required' => false,
+            ])
+            ->add('cuisine_separee', CheckboxType::class, [
+                'required' => false,
+            ])
+            ->add('meuble', CheckboxType::class, [
+                'required' => false,
+            ])
+            ->add('colocation', CheckboxType::class, [
+                'required' => false,
+            ])
+            ->add('wc_separes', CheckboxType::class, [
+                'required' => false,
+            ])
             ->add('type_de_bien', EntityType::class, [
                 'class' => TypeDeBien::class
             ])

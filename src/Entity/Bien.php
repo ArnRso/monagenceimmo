@@ -175,6 +175,11 @@ class Bien
      */
     private $images;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="biens")
+     */
+    private $author;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -537,6 +542,18 @@ class Bien
     public function setImages(?string $images): self
     {
         $this->images = $images;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }
