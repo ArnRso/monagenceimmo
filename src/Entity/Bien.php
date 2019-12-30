@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +15,7 @@ class Bien
     public function __construct()
     {
         $this->setCreatedAt(new \DateTime());
+        $this->likedBy = new ArrayCollection();
     }
 
     /**
@@ -179,6 +182,11 @@ class Bien
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="biens")
      */
     private $author;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="favorites")
+     */
+    private $likedBy;
 
     public function getId(): ?int
     {
@@ -559,6 +567,34 @@ class Bien
     public function setAuthor(?User $author): self
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getLikedBy(): Collection
+    {
+        return $this->likedBy;
+    }
+
+    public function addLikedBy(User $likedBy): self
+    {
+        if (!$this->likedBy->contains($likedBy)) {
+            $this->likedBy[] = $likedBy;
+            $likedBy->addFavorite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLikedBy(User $likedBy): self
+    {
+        if ($this->likedBy->contains($likedBy)) {
+            $this->likedBy->removeElement($likedBy);
+            $likedBy->removeFavorite($this);
+        }
 
         return $this;
     }

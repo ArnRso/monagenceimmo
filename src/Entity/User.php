@@ -62,9 +62,15 @@ class User implements UserInterface
      */
     private $biens;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Bien", inversedBy="likedBy")
+     */
+    private $favorites;
+
     public function __construct()
     {
         $this->biens = new ArrayCollection();
+        $this->favorites = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -207,6 +213,32 @@ class User implements UserInterface
             if ($bien->getAuthor() === $this) {
                 $bien->setAuthor(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Bien[]
+     */
+    public function getFavorites(): Collection
+    {
+        return $this->favorites;
+    }
+
+    public function addFavorite(Bien $favorite): self
+    {
+        if (!$this->favorites->contains($favorite)) {
+            $this->favorites[] = $favorite;
+        }
+
+        return $this;
+    }
+
+    public function removeFavorite(Bien $favorite): self
+    {
+        if ($this->favorites->contains($favorite)) {
+            $this->favorites->removeElement($favorite);
         }
 
         return $this;
