@@ -8,14 +8,14 @@
         <nav>
             <a href="{{ path('bien_index') }}">Trouver une location</a>
             <a href="{{ path('bien_new') }}">Déposer mon annonce</a>
-            <a href="">Mes Favoris</a>
+            <a href="{{ path('favoris') }}">Mes Favoris</a>
         </nav>
 
     </div>
 
     <div class="profil">
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-            <a href="" class="btn rouge">Mon profil</a>
+            <a href="{{ path('profil') }}" class="btn rouge">Mon profil</a>
             <a href="{{ path('app_logout') }}" class="btn blanc">Se déconnecter</a>
         {% else %}
             <a href="{{ path('app_login') }}" class="btn rouge">Se connecter</a>

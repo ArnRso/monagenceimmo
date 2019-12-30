@@ -73,7 +73,6 @@ header {
   }
 
 
-
   form {
     display: flex;
     justify-content: space-between;
@@ -94,8 +93,9 @@ header {
       min-width: 20%;
       max-width: 20%;
       background-color: #f6f6f6;
+
       &:focus {
-        outline:none;
+        outline: none;
       }
     }
 
@@ -136,9 +136,9 @@ header {
   button {
     height: 58px;
     background-color: $rouge;
-    color:white;
+    color: white;
     font-family: $montserrat;
-    border:none;
+    border: none;
     border-radius: 30px;
     padding: 0 30px;
     font-size: 20px;
@@ -385,6 +385,49 @@ header {
     background-color: $bleu;
     border-radius: 5px;
     font-size: 1.2rem;
+  }
+}
+
+
+// Profil user
+
+.profil-user {
+  padding-top: 30px;
+  text-align: center;
+  font-family: $montserrat;
+
+  p.email {
+    color: $rouge;
+  }
+
+  .boutons {
+    display: flex;
+    justify-content: space-between;
+    width:80%;
+    margin: 100px auto 0;
+
+    .bouton {
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width:120px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: $gris;
+      font-weight: bold;
+      &.active {
+        background-color: $bleu;
+        color: white;
+      }
+
+      .image-container {
+
+        img {
+
+        }
+      }
+    }
   }
 }
 

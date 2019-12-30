@@ -86,7 +86,8 @@ class BienType extends AbstractType
             ->add('images', FileType::class, [
                 "mapped" => false, // permet d'indiquer à symfony que cet input ne correspond à aucun champ de notre entité
                 "multiple" => true, // permet d'uploader plusieurs fichiers à la fois
-                "label" => "Uploadez vos photos"
+                "label" => "Uploadez vos photos",
+                "required" => false
             ]);
     }
 

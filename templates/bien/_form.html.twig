@@ -132,7 +132,7 @@
                 <div style="width:100px; height:100px;">
                     <img src="{{ asset('assets/uploaded_images') ~ '/'~image }}"
                          style="width:100%; height:auto;">
-                    <a href="{{ path('bien_image_delete', {'id_image': loop.index0, 'id': article.id}) }}">supprimer
+                    <a href="{{ path('bien_image_delete', {'id_image': loop.index0, 'id': bien.id}) }}">supprimer
                         l'image</a>
                 </div>
 

@@ -21,6 +21,11 @@ class User implements UserInterface
      */
     private $id;
 
+    public function __toString()
+    {
+        return $this->getFirstName() . " " . $this->getLastName();
+    }
+
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */

@@ -20,7 +20,7 @@ class BienController extends AbstractController
     /**
      * @Route("/", name="bien_index", methods={"GET"})
      */
-    public function index(BienRepository $bienRepository): Response
+    public function index(): Response
     {
         return $this->render('bien/index.html.twig', [
             'biens' => [] //$bienRepository->findAll(),
@@ -29,6 +29,9 @@ class BienController extends AbstractController
 
     /**
      * @Route("/recherche", name="bien_recherche_simple")
+     * @param Request $request
+     * @param BienRepository $bienRepository
+     * @return Response
      */
     public function simpleSearch(Request $request, BienRepository $bienRepository): Response
     {
@@ -54,6 +57,7 @@ class BienController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $bien = new Bien();
         $form = $this->createForm(BienType::class, $bien);
         $form->handleRequest($request);
@@ -62,20 +66,23 @@ class BienController extends AbstractController
             // stock toutes les images envoyées par le formulaire dans $images
             $images = $request->files->get('bien')['images'];
             // boucle sur chacune des images
-            foreach ($images as $image) {
-                // stock le dossier de destination défini dans config/services.yaml
-                $upload_directory = $this->getParameter('uploads_directory');
-                // génère un nom unique pour chauque photo
-                $filename = md5(uniqid()) . '.' . $image->guessExtension();
-                // déplace le fichier dans le dossier désiré
-                $image->move(
-                // dossier de destination
-                    $upload_directory,
-                    // nom du fichier
-                    $filename
-                );
-                // Ajoute le nom du fichier image à l'array Images dans la BDD
-                $bien->addImages($filename);
+            if ($images != null) {
+                // boucle sur chacune des images
+                foreach ($images as $image) {
+                    // stock le dossier de destination défini dans config/services.yaml
+                    $upload_directory = $this->getParameter('uploads_directory');
+                    // génère un nom unique pour chauque photo
+                    $filename = md5(uniqid()) . '.' . $image->guessExtension();
+                    // déplace le fichier dans le dossier désiré
+                    $image->move(
+                    // dossier de destination
+                        $upload_directory,
+                        // nom du fichier
+                        $filename
+                    );
+                    // Ajoute le nom du fichier image à l'array Images dans la BDD
+                    $bien->addImages($filename);
+                }
             }
             $bien->setAuthor($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
@@ -103,6 +110,9 @@ class BienController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="bien_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Bien $bien
+     * @return Response
      */
     public function edit(Request $request, Bien $bien): Response
     {
@@ -111,23 +121,26 @@ class BienController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // stock toutes les images envoyées par le formulaire dans $images
-            $images = $request->files->get('article')['images'];
-            // boucle sur chacune des images
-            foreach ($images as $image) {
-                // stock le dossier de destination défini dans config/services.yaml
-                $upload_directory = $this->getParameter('uploads_directory');
-                // génère un nom unique pour chauque photo
-                $filename = md5(uniqid()) . '.' . $image->guessExtension();
-                // déplace le fichier dans le dossier désiré
-                $image->move(
-                // dossier de destination
-                    $upload_directory,
-                    // nom du fichier
-                    $filename
-                );
-                // Ajoute le nom du fichier image à l'array Images dans la BDD
-                $bien->addImages($filename);
+            $images = $request->files->get('bien')['images'];
+            if ($images != null) {
+                // boucle sur chacune des images
+                foreach ($images as $image) {
+                    // stock le dossier de destination défini dans config/services.yaml
+                    $upload_directory = $this->getParameter('uploads_directory');
+                    // génère un nom unique pour chauque photo
+                    $filename = md5(uniqid()) . '.' . $image->guessExtension();
+                    // déplace le fichier dans le dossier désiré
+                    $image->move(
+                    // dossier de destination
+                        $upload_directory,
+                        // nom du fichier
+                        $filename
+                    );
+                    // Ajoute le nom du fichier image à l'array Images dans la BDD
+                    $bien->addImages($filename);
+                }
             }
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('bien_index');

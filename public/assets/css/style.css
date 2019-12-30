@@ -307,6 +307,35 @@ header .profil .btn.blanc {
   font-size: 1.2rem;
 }
 
+.profil-user {
+  padding-top: 30px;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+}
+.profil-user p.email {
+  color: #FF5858;
+}
+.profil-user .boutons {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 100px auto 0;
+}
+.profil-user .boutons .bouton {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 120px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #444444;
+  font-weight: bold;
+}
+.profil-user .boutons .bouton.active {
+  background-color: #2d64A5;
+  color: white;
+}
 footer {
   background-color: #2d64A5;
 }

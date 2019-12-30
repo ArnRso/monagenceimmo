@@ -4,11 +4,11 @@
                 {% if app.request.query.get("localisation") %}
             value="{{ app.request.query.get("localisation") }}"
                 {% endif %}>
-        <input type="text" placeholder="Prix max." name="prixMax"
+        <input type="number" placeholder="Prix max." name="prixMax"
                 {% if app.request.query.get("prixMax") %}
             value="{{ app.request.query.get("prixMax") }}"
                 {% endif %}>
-        <input type="text" placeholder="Surface min." name="surfaceMin"
+        <input type="number" placeholder="Surface min." name="surfaceMin"
                 {% if app.request.query.get("surfaceMin") %}
             value="{{ app.request.query.get("surfaceMin") }}"
                 {% endif %}>

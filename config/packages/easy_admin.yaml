@@ -6,4 +6,4 @@ easy_admin:
         - App\Entity\TypeDeBien
 #        - App\Entity\Product
 #        - App\Entity\Category
-#        - App\Entity\User
+        - App\Entity\User
