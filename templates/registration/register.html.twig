@@ -3,14 +3,15 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <div class="container-fluid register" style="background-image: url('{{ asset('assets/img/map-grayscale.svg') }}')">
+    <div class="register" style="background-image: url('{{ asset('assets/img/map-grayscale.svg') }}')">
         <div class="form-area">
             <h1>Créer un compte</h1>
 
             {{ form_start(registrationForm) }}
             {{ form_row(registrationForm.firstName, {
                 'attr' : {
-                    'placeholder': 'Prénom'
+                    'placeholder': 'Prénom',
+                    'autofocus': true,
                 },
                 'label': false
             }) }}
@@ -36,8 +37,9 @@
 
             }) }}
 
-
-            <button class="btn">Register</button>
+            <div class="div-right">
+                <button class="btn btn-carre btn-noir">Valider</button>
+            </div>
             {{ form_end(registrationForm) }}
         </div>
     </div>

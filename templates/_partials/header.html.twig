@@ -2,7 +2,7 @@
     <div class="left-container">
         <a href="{{ path('index') }}">
             <div class="logo-container">
-                <img src="{{ asset('assets/img/logo_blanc.png') }}" alt="" class="img-fluid">
+                <img src="{{ asset('assets/img/logo_blanc.png') }}" alt="">
             </div>
         </a>
         <nav>
@@ -15,11 +15,11 @@
 
     <div class="profil">
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-            <a href="{{ path('profil') }}" class="btn rouge">Mon profil</a>
-            <a href="{{ path('app_logout') }}" class="btn blanc">Se déconnecter</a>
+            <a href="{{ path('profil') }}" class="btn btn-pill btn-rouge">Mon profil</a>
+            <a href="{{ path('app_logout') }}" class="btn btn-pill btn-blanc">Se déconnecter</a>
         {% else %}
-            <a href="{{ path('app_login') }}" class="btn rouge">Se connecter</a>
-            <a href="{{ path('app_register') }}" class="btn blanc">S'inscrire</a>
+            <a href="{{ path('app_login') }}" class="btn btn-pill btn-rouge">Se connecter</a>
+            <a href="{{ path('app_register') }}" class="btn btn-pill btn-blanc">S'inscrire</a>
         {% endif %}
     </div>
 </header>

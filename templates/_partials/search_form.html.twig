@@ -1,4 +1,4 @@
-<form action="{{ path('bien_recherche_simple') }}" method="GET">
+<form action="{{ path('bien_recherche_simple') }}" method="GET" class="search-form">
     <div class="form-inside-div">
         <input type="text" placeholder="Ville" name="localisation"
                 {% if app.request.query.get("localisation") %}
@@ -19,9 +19,7 @@
             <option value="parking">Parking</option>
             <option value="balcon">Balcon</option>
         </select>
-        <a href="">Plus de critères</a>
+        <a href="" class="btn btn-noir">Plus de critères</a>
     </div>
-
-
-    <button type="submit">Recherche</button>
+    <button type="submit" class="btn btn-pill btn-rouge">Recherche</button>
 </form>

@@ -3,37 +3,29 @@
 {% block title %}Bien index{% endblock %}
 
 {% block body %}
-    <div class="container-fluid search-section bien mt-xl-5">
-        <div class="search-div">
-            {% include '_partials/search_form.html.twig' %}
-        </div>
+    <div class="div-center">
+        {% include '_partials/search_form.html.twig' %}
     </div>
-    <div class="container-fluid px-xl-5">
+    <div class="biensContainer index">
+        {% for bien in biens %}
+            <div class="bien">
+                <a href="{{ path("bien_show", {"id": bien.id}) }}">
+                    <div class="thumbnail-container"
+                         style="background-image: url('{{ asset('assets/uploaded_images/' ~ bien.images[0]) }}');">
 
-        <div class="row">
-            {% for bien in biens %}
-                <div class="col-xl-4 flex bien-card px-xl-5 mt-xl-5 mb-xl-5">
-                    <a href="{{ path("bien_show", {"id": bien.id}) }}">
-                        <div class="thumbnail-container" style="background-image: url('{{ asset('assets/uploaded_images/' ~ bien.images[0]) }}');">
-
-                        </div>
-                    </a>
-                    <a href="{{ path("bien_show", {"id": bien.id}) }}">
-                        <h2 class="mt-xl-2">{{ bien.ville }} {{ bien.codePostal }} - {{ bien.surface }}m²</h2>
-                    </a>
-                    <h3 class="mt-xl-2">{{ bien.prix }}€</h3>
-                    <p class="mt-xl-2">{{ bien.description | easyadmin_truncate(150) | raw }}</p>
-                    <div class="row mt-xl-3">
-                        <div class="col-xl-4">
-                            <a href="" class="btn bleu">Favoris</a>
-                        </div>
-                        <div class="col-xl-5">
-                            <a href="{{ path("bien_show", {"id": bien.id}) }}" class="btn noir">+ d'infos</a>
-                        </div>
                     </div>
+                </a>
+                <a href="{{ path("bien_show", {"id": bien.id}) }}">
+                    <h2>{{ bien.ville }} {{ bien.codePostal }} - {{ bien.surface }}m²</h2>
+                </a>
+                <h3>{{ bien.prix }}€</h3>
+                <p>{{ bien.description | easyadmin_truncate(150) | raw }}</p>
+                <div class="div-right">
+                    <a href="" class="btn btn-carre btn-bleu">Favoris</a>
+                    <a href="{{ path("bien_show", {"id": bien.id}) }}" class="btn btn-carre btn-rouge">Plus d'infos</a>
                 </div>
-            {% endfor %}
-        </div>
-
+            </div>
+        {% endfor %}
     </div>
+
 {% endblock %}

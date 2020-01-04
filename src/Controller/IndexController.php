@@ -27,6 +27,7 @@ class IndexController extends AbstractController
      */
     public function profilShow(BienRepository $bienRepository)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $biens = $bienRepository->findBy(["author" => $this->getUser()]);
         return $this->render("profil/profil.html.twig", [
            'biens' => $biens,
@@ -39,6 +40,7 @@ class IndexController extends AbstractController
      */
     public function favorisShow(BienRepository $bienRepository)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         // TODO : Injecter les biens favoris !!!
         $biens = $bienRepository->findBy(["author" => $this->getUser()]);
         return $this->render("profil/profil.html.twig", [
