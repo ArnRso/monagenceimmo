@@ -3,15 +3,46 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <div class="container-fluid register" style="background-image: url('{{ asset('assets/img/map-grayscale.svg') }}')">
+        <div class="form-area">
+            <h1>Créer un compte</h1>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.firstName) }}
-        {{ form_row(registrationForm.lastName) }}
-        {{ form_row(registrationForm.phone) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.password) }}
+            {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.firstName, {
+                'attr' : {
+                    'placeholder': 'Prénom'
+                },
+                'label': false
+            }) }}
+            {{ form_row(registrationForm.lastName, {
+                'attr' : {
+                    'placeholder': 'Nom'
+                },
+                'label': false
+            }) }}
+            {{ form_row(registrationForm.phone, {
+                'attr' : {
+                    'placeholder': 'Numéro de téléphone'
+                },
+                'label': false
+            }) }}
+            {{ form_row(registrationForm.email, {
+                'attr' : {
+                    'placeholder': 'Email'
+                },
+                'label': false
+            }) }}
+            {{ form_row(registrationForm.password, {
 
-        <button class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+            }) }}
+
+
+            <button class="btn">Register</button>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
 {% endblock %}

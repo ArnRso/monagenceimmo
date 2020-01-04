@@ -19,6 +19,7 @@ $montserrat: 'Montserrat', sans-serif;
 // HEADER -------------------------
 
 header {
+  height: 15vh;
   background-color: $bleu;
   display: flex;
   align-items: center;
@@ -403,7 +404,7 @@ header {
   .boutons {
     display: flex;
     justify-content: space-between;
-    width:80%;
+    width: 80%;
     margin: 100px auto 0;
 
     .bouton {
@@ -411,11 +412,12 @@ header {
       display: flex;
       justify-content: center;
       flex-direction: column;
-      width:120px;
+      width: 120px;
       border-radius: 10px;
       text-decoration: none;
       color: $gris;
       font-weight: bold;
+
       &.active {
         background-color: $bleu;
         color: white;
@@ -431,10 +433,48 @@ header {
   }
 }
 
+// REGISTER & LOGIN --------------------------------
 
-// FOOTER -----------------------
+.register {
+  background-size: cover;
+  background-position: center;
+  //background-color: $bleusecondaire;
+  background-color: gray;
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .form-area {
+    background-color: white;
+    border-radius: 15px;
+    width: 50%;
+
+    h1 {
+      text-align: center;
+      font-family: $montserrat;
+      color: $bleu;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        width: 100%;
+        text-align: center;
+        font-family: $montserrat;
+        border: none;
+      }
+    }
+  }
+}
+
+
+// FOOTER ------------------------------------------
 footer {
   background-color: $bleu;
+  height: 15vh;
 }
 
 

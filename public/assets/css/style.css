@@ -10,6 +10,7 @@
 }
 
 header {
+  height: 15vh;
   background-color: #2d64A5;
   display: flex;
   align-items: center;
@@ -336,8 +337,39 @@ header .profil .btn.blanc {
   background-color: #2d64A5;
   color: white;
 }
+.register {
+  background-size: cover;
+  background-position: center;
+  background-color: gray;
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.register .form-area {
+  background-color: white;
+  border-radius: 15px;
+  width: 50%;
+}
+.register .form-area h1 {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  color: #2d64A5;
+}
+.register .form-area form {
+  display: flex;
+  flex-direction: column;
+}
+.register .form-area form input {
+  width: 100%;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  border: none;
+}
+
 footer {
   background-color: #2d64A5;
+  height: 15vh;
 }
 
 /*# sourceMappingURL=style.css.map */
