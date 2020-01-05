@@ -1,236 +1,212 @@
-{{ form_start(form, {'attr': {
-    'class': 'bienForm'
-}}) }}
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-xl-6">
-            <h2>Général</h2>
-            <div class="row">
-                <div class="col-12">
-                    {{ form_row(form.titre, {
-                        'attr': {
-                            'placeholder': 'Titre de l\'annonce'
-                        },
-                        'row_attr': {
-                            'class': 'formRow largeInput'
-                        }}) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    {{ form_row(form.description, {'attr': {
-                        'placeholder': 'Decription',
-                    },
-                        'row_attr': {
-                            'class': 'formRow largeInput'
-                        }}) }}
-                </div>
-            </div>
-            <h2>Addresse</h2>
-            <div class="row">
-                <div class="col-3">
-                    {{ form_row(form.numero_rue, {
-                        'attr': {
-                            'placeholder': 'Numéro'
-                        }
-                        ,'row_attr': {
-                            'class': 'formRow largeInput'
-                        }}) }}
-                </div>
-                <div class="col-5">
-                    {{ form_row(form.rue, {
-                        'attr': {
-                            'placeholder': 'Nom de la rue'
-                        }
-                        ,'row_attr': {
-                            'class': 'formRow largeInput'
-                        }}) }}
-                </div>
-                <div class="col-4">
-                    {{ form_row(form.rue_complement, {
-                        'attr': {
-                            'placeholder': 'Complément'
-                        }
-                        ,'row_attr': {
-                            'class': 'formRow largeInput'
-                        }}) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-6">
-                    {{ form_row(form.code_postal, {
-                        'attr': {
-                            'placeholder': 'Code postal'
-                        }
-                        ,'row_attr': {
-                            'class': 'formRow largeInput'
-                        }}) }}
-                </div>
-                <div class="col-xl-6">
-                    {{ form_row(form.ville, {
-                        'attr': {
-                            'placeholder': 'Ville'
-                        }
-                        ,'row_attr': {
-                            'class': 'formRow largeInput'
-                        }}) }}
-                </div>
-            </div>
-            <h2>Détails</h2>
-            <div class="row">
-                <div class="col-12">
-                    {{ form_row(form.prix, {
-                        'attr': {
-                            'placeholder': 'Prix (€)'
-                        }
-                        ,'row_attr': {
-                            'class': 'formRow largeInput'
-                        }}) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    {{ form_row(form.surface, {
-                        'attr': {
-                            'placeholder': 'Surface (m²)'
-                        }
-                        ,'row_attr': {
-                            'class': 'formRow largeInput'
-                        }}) }}
-                </div>
-                <div class="col-6">
-                    {{ form_row(form.surface_terrain, {
-                        'attr': {
-                            'placeholder': 'Surface du terrain (m²)'
-                        }
-                        ,'row_attr': {
-                            'class': 'formRow largeInput'
-                        }}) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    {{ form_row(form.nombre_de_pieces, {
-                        'attr': {
-                            'placeholder': 'Nombre de pièces'
-                        }
-                        ,'row_attr': {
-                            'class': 'formRow largeInput'
-                        }}) }}
-                </div>
-                <div class="col-6">
-                    {{ form_row(form.nombre_chambres, {
-                        'attr': {
-                            'placeholder': 'Nombre de chambres'
-                        }
-                        ,'row_attr': {
-                            'class': 'formRow largeInput'
-                        }}) }}
-                </div>
-            </div>
-            {% for image in bien.images %}
-                <div style="width:100px; height:100px;">
-                    <img src="{{ asset('assets/uploaded_images') ~ '/'~image }}"
-                         style="width:100%; height:auto;">
-                    <a href="{{ path('bien_image_delete', {'id_image': loop.index0, 'id': bien.id}) }}">supprimer
-                        l'image</a>
-                </div>
+{{ form_start(form) }}
 
-            {% endfor %}
-            <div class="row mt-5">
-                <div class="col-xl-4 col-6">
-                    {{ form_row(form.meuble, {'label': 'Meublé','row_attr': {
-                        'class': 'formRow checkbox'
-                    }}) }}
-                </div>
-                <div class="col-xl-4 col-6">
-                    {{ form_row(form.balcon, {'row_attr': {
-                        'class': 'formRow checkbox'
-                    }}) }}
-                </div>
-                <div class="col-xl-4 col-6">
-                    {{ form_row(form.terrasse, {'row_attr': {
-                        'class': 'formRow checkbox'
-                    }}) }}
-                </div>
-                <div class="col-xl-4 col-6">
-                    {{ form_row(form.ascenseur, {'row_attr': {
-                        'class': 'formRow checkbox'
-                    }}) }}
-                </div>
-                <div class="col-xl-4 col-6">
-                    {{ form_row(form.cave, {'row_attr': {
-                        'class': 'formRow checkbox'
-                    }}) }}
-                </div>
-                <div class="col-xl-4 col-6">
-                    {{ form_row(form.parking, {'row_attr': {
-                        'class': 'formRow checkbox'
-                    }}) }}
-                </div>
-                <div class="col-xl-4 col-6">
-                    {{ form_row(form.cuisine_separee, {'row_attr': {
-                        'class': 'formRow checkbox'
-                    }}) }}
-                </div>
-                <div class="col-xl-4 col-6">
-                    {{ form_row(form.wc_separes, {'row_attr': {
-                        'class': 'formRow checkbox'
-                    }}) }}
-                </div>
-                <div class="col-xl-4 col-6">
-                    {{ form_row(form.baignoire, {'row_attr': {
-                        'class': 'formRow checkbox'
-                    }}) }}
-                </div>
-                <div class="col-xl-4 col-6">
-                    {{ form_row(form.cheminee, {'row_attr': {
-                        'class': 'formRow checkbox'
-                    }}) }}
-                </div>
-                <div class="col-xl-4 col-6">
-                    {{ form_row(form.belle_vue, {'row_attr': {
-                        'class': 'formRow checkbox'
-                    }}) }}
-                </div>
-                <div class="col-xl-4 col-6">
-                    {{ form_row(form.piscine, {'row_attr': {
-                        'class': 'formRow checkbox'
-                    }}) }}
-                </div>
-                <div class="col-xl-4 col-6">
-                    {{ form_row(form.acces_handicape, {'row_attr': {
-                        'class': 'formRow checkbox'
-                    }}) }}
-                </div>
-                <div class="col-xl-4 col-6">
-                    {{ form_row(form.colocation, {'row_attr': {
-                        'class': 'formRow checkbox'
-                    }}) }}
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-6">{{ form_row(form.chauffage, {
-                        'label':'Type de chauffage',
-                        'placeholder': '-- Type de chauffage --',
-                        'row_attr': {
-                            'class': 'formRow selectInput'
-                        }}) }}</div>
-                <div class="col-6">{{ form_row(form.type_de_bien, {
-                        'label':'Type de bien',
-                        'placeholder': '-- Type de bien --',
-                        'row_attr': {
-                            'class': 'formRow selectInput'
-                        }}) }}</div>
-            </div>
-            <div class="row justify-content-center mt-5">
-                <button class="btn" type="submit">{{ button_label|default('Save') }}</button>
-            </div>
+<h2>Général</h2>
+<div class="general">
+    {{ form_row(form.titre, {
+        'label': false,
+        'attr': {
+            'placeholder': 'Titre de l\'annonce'
+        }}) }}
+    {{ form_row(form.description, {
+        'label': false,
+        'attr': {
+            'placeholder': 'Decription',
+        }}) }}
+</div>
+<h2>Addresse</h2>
+<div class="addresse">
+    <div class="ligne">
+        {{ form_row(form.numero_rue, {
+            'label': false,
+            'attr': {
+                'placeholder': 'Numéro',
+            },
+            'row_attr': {
+                'class': 'numero'
+            }
+        }) }}
+        {{ form_row(form.rue, {
+            'label': false,
+            'attr': {
+                'placeholder': 'Nom de la rue',
+            },
+            'row_attr': {
+                'class': 'rue'
+            }}) }}
+        {{ form_row(form.rue_complement, {
+            'label': false,
+            'attr': {
+                'placeholder': 'Complément',
+            },
+            'row_attr': {
+                'class': 'complement'
+            }
+        }) }}
+    </div>
+    <div class="ligne">
+        {{ form_row(form.code_postal, {
+            'label': false,
+            'attr': {
+                'placeholder': 'Code postal',
+            },
+            'row_attr': {
+                'class':'codepostal'
+            }}) }}
+        {{ form_row(form.ville, {
+            'label': false,
+            'attr': {
+                'placeholder': 'Ville',
+            },
+            'row_attr': {
+                'class':'ville'
+            }}) }}
+    </div>
+</div>
+
+<h2>Détails</h2>
+<div class="details">
+    <div class="ligne">
+        {{ form_row(form.prix, {
+            'label': false,
+            'attr': {
+                'placeholder': 'Prix (€)'
+            },
+            'row_attr': {
+                'class': '***'
+            }
+        }) }}
+        {{ form_row(form.surface, {
+            'label': false,
+            'attr': {
+                'placeholder': 'Surface (m²)'
+            },
+            'row_attr': {
+                'class': 'surface'
+            }
+        }) }}
+        {{ form_row(form.surface_terrain, {
+            'label': false,
+            'attr': {
+                'placeholder': 'Surface du terrain (m²)'
+            },
+            'row_attr': {
+                'class': 'terrain'
+            }
+        }) }}
+        {{ form_row(form.nombre_de_pieces, {
+            'label': false,
+            'attr': {
+                'placeholder': 'Nombre de pièces'
+            },
+            'row_attr': {
+                'class': 'pieces'
+            }
+        }) }}
+        {{ form_row(form.nombre_chambres, {
+            'label': false,
+            'attr': {
+                'placeholder': 'Nombre de chambres'
+            },
+            'row_attr': {
+                'class': 'chambres'
+            }
+        }) }}
+    </div>
+</div>
+<h2>Images</h2>
+{{ form_row(form.images, {
+    'row_attr': {
+        'class': 'img-upload'
+    },
+    'label': false,
+}) }}
+<div class="images">
+    {% for image in bien.images %}
+        <div class="img-container" style="background-image: url('{{ asset('assets/uploaded_images') ~ '/'~image }}')">
+            <a href="{{ path('bien_image_delete', {'id_image': loop.index0, 'id': bien.id}) }}">X</a>
         </div>
+    {% endfor %}
+</div>
+<h2>Caractéristiques</h2>
+<div class="caracteristiques">
+    <div class="ligne1">
+        {{ form_row(form.meuble, {
+            'label': 'Meublé',
+            'row_attr': {
+                'class': 'formRow checkbox'
+            }}) }}
+        {{ form_row(form.balcon, {
+            'row_attr': {
+                'class': 'formRow checkbox'
+            }}) }}
+        {{ form_row(form.terrasse, {
+            'row_attr': {
+                'class': 'formRow checkbox'
+            }}) }}
+        {{ form_row(form.ascenseur, {
+            'row_attr': {
+                'class': 'formRow checkbox'
+            }}) }}
+        {{ form_row(form.cave, {
+            'row_attr': {
+                'class': 'formRow checkbox'
+            }}) }}
+        {{ form_row(form.parking, {
+            'row_attr': {
+                'class': 'formRow checkbox'
+            }}) }}
+        {{ form_row(form.cuisine_separee, {
+            'row_attr': {
+                'class': 'formRow checkbox'
+            }}) }}
+        {{ form_row(form.wc_separes, {
+            'row_attr': {
+                'class': 'formRow checkbox'
+            }}) }}
+        {{ form_row(form.baignoire, {
+            'row_attr': {
+                'class': 'formRow checkbox'
+            }}) }}
+        {{ form_row(form.cheminee, {
+            'row_attr': {
+                'class': 'formRow checkbox'
+            }}) }}
+        {{ form_row(form.belle_vue, {
+            'row_attr': {
+                'class': 'formRow checkbox'
+            }}) }}
+        {{ form_row(form.piscine, {
+            'row_attr': {
+                'class': 'formRow checkbox'
+            }}) }}
+        {{ form_row(form.acces_handicape, {
+            'row_attr': {
+                'class': 'formRow checkbox'
+            }}) }}
+        {{ form_row(form.colocation, {
+            'row_attr': {
+                'class': 'formRow checkbox'
+            }}) }}
+    </div>
+    <div class="ligne2">
+        {{ form_row(form.chauffage, {
+            'label': false,
+            'placeholder': '-- Type de chauffage --',
+            'row_attr': {
+                'class': 'formRow selectInput'
+            }}) }}
+        {{ form_row(form.type_de_bien, {
+            'label': false,
+            'placeholder': '-- Type de bien --',
+            'row_attr': {
+                'class': 'formRow selectInput'
+            }}) }}
     </div>
 
 </div>
-
+<div class="div-right">
+    <button class="btn btn-rouge btn-pill" type="submit">{{ button_label|default('Save') }}</button>
+</div>
 {{ form_end(form) }}
 
 

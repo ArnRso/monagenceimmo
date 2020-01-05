@@ -1,69 +1,60 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container-fluid px-xl-5">
-        <div class="row">
-            <div class="col-4 profil-user">
-                <h2>{{ app.user.firstName }} {{ app.user.lastName }}</h2>
-                <p class="email">{{ app.user.email }}</p>
+    <div class="profil-page">
+        <div class="profil-user">
+            <h2>{{ app.user.firstName }} {{ app.user.lastName }}</h2>
+            <p class="email">{{ app.user.email }}</p>
 
-                <div class="boutons">
-                    <a href="{{ path('profil') }}" class="bouton {% if active == "profil" %}active{% endif %}">
-                        <div class="image-container">
-                            {% if active == "profil" %}
-                                <img src="{{ asset('assets/img/home.svg') }}" alt="">
-                            {% else %}
-                                <img src="{{ asset('assets/img/home_gris.svg') }}" alt="">
-                            {% endif %}
-                        </div>
-                        <span>Annonces</span>
-                    </a>
-                    <a href="{{ path('favoris') }}" class="bouton {% if active == "favoris" %}active{% endif %}">
-                        <div class="image-container">
-                            {% if active == "favoris" %}
-                                <img src="{{ asset('assets/img/coeur.svg') }}" alt="">
-                            {% else %}
-                                <img src="{{ asset('assets/img/coeur_gris.svg') }}" alt="">
-                            {% endif %}
-                        </div>
-                        <span>Favoris</span>
-                    </a>
-                </div>
+            <div class="boutons">
+                <a href="{{ path('profil') }}" class="bouton {% if active == "profil" %}active{% endif %}">
+                    <div class="image-container">
+                        {% if active == "profil" %}
+                            <img src="{{ asset('assets/img/home.svg') }}" alt="">
+                        {% else %}
+                            <img src="{{ asset('assets/img/home_gris.svg') }}" alt="">
+                        {% endif %}
+                    </div>
+                    <span>Annonces</span>
+                </a>
+                <a href="{{ path('favoris') }}" class="bouton {% if active == "favoris" %}active{% endif %}">
+                    <div class="image-container">
+                        {% if active == "favoris" %}
+                            <img src="{{ asset('assets/img/coeur.svg') }}" alt="">
+                        {% else %}
+                            <img src="{{ asset('assets/img/coeur_gris.svg') }}" alt="">
+                        {% endif %}
+                    </div>
+                    <span>Favoris</span>
+                </a>
             </div>
-            <div class="col-8">
-                <div class="row">
-                    {% if biens is not empty %}
-                        {% for bien in biens %}
-                            <div class="col-xl-6 flex bien-card px-xl-5 mt-xl-5 mb-xl-5">
-                                <a href="{{ path("bien_show", {"id": bien.id}) }}">
-                                    <div class="thumbnail-container"
-                                         style="background-image: url('{{ asset('assets/uploaded_images/' ~ bien.images[0]) }}');">
+        </div>
+        <div class="biensContainer">
+            {% if biens is not empty %}
+                {% for bien in biens %}
+                    <div class="bien profil">
+                        <a href="{{ path("bien_show", {"id": bien.id}) }}">
+                            <div class="thumbnail-container"
+                                 style="background-image: url('{{ asset('assets/uploaded_images/' ~ bien.images[0]) }}');">
 
-                                    </div>
-                                </a>
-                                <a href="{{ path("bien_show", {"id": bien.id}) }}">
-                                    <h2 class="mt-xl-2">{{ bien.ville }} {{ bien.codePostal }} - {{ bien.surface }}
-                                        m²</h2>
-                                </a>
-                                <h3 class="mt-xl-2">{{ bien.prix }}€</h3>
-                                <p class="mt-xl-2">{{ bien.description | easyadmin_truncate(150) | raw }}</p>
-                                <div class="row mt-xl-3">
-                                    <div class="col-xl-4">
-                                        <a href="" class="btn bleu">Favoris</a>
-                                    </div>
-                                    <div class="col-xl-5">
-                                        <a href="{{ path("bien_show", {"id": bien.id}) }}" class="btn noir">+
-                                            d'infos</a>
-                                    </div>
-                                </div>
                             </div>
-                        {% endfor %}
-                    {% else %}
-                        <h2 class="error">Aucune annonce publiée...</h2>
-                        <a href="{{ path('bien_new') }}">Créez une annonce</a>
-                    {% endif %}
-                </div>
-            </div>
+                        </a>
+                        <a href="{{ path("bien_show", {"id": bien.id}) }}">
+                            <h2>{{ bien.ville }} {{ bien.codePostal }} - {{ bien.surface }}m²</h2>
+                        </a>
+                        <h3>{{ bien.prix }}€</h3>
+                        <p>{{ bien.description | easyadmin_truncate(150) | raw }}</p>
+                        <div class="div-left">
+                            <a href="" class="btn btn-carre btn-bleu">Favoris</a>
+                            <a href="{{ path("bien_show", {"id": bien.id}) }}" class="btn btn-carre btn-rouge">Plus
+                                d'infos</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h2 class="error">Aucune annonce publiée...</h2>
+                <a href="{{ path('bien_new') }}">Créez une annonce</a>
+            {% endif %}
         </div>
     </div>
 

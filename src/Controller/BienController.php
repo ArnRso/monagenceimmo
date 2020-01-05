@@ -19,11 +19,13 @@ class BienController extends AbstractController
 {
     /**
      * @Route("/", name="bien_index", methods={"GET"})
+     * @param BienRepository $bienRepository
+     * @return Response
      */
-    public function index(): Response
+    public function index(BienRepository $bienRepository): Response
     {
         return $this->render('bien/index.html.twig', [
-            'biens' => [] //$bienRepository->findAll(),
+            'biens' => $bienRepository->findAll(),
         ]);
     }
 

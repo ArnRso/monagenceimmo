@@ -12,6 +12,10 @@
   justify-content: space-between;
 }
 
+.div-left {
+  display: flex;
+}
+
 .div-right {
   display: flex;
   justify-content: flex-end;
@@ -65,6 +69,7 @@ header .profil a {
   text-decoration: none;
   font-weight: bold;
   font-size: 1em;
+  text-align: center;
 }
 .btn:hover {
   transform: scale(1.05);
@@ -176,14 +181,14 @@ header .profil a {
 
 .biensContainer {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
   flex-wrap: wrap;
   width: 80%;
-  margin: 0 auto;
+  margin: 0 auto 0;
+  justify-content: flex-start;
 }
 .biensContainer .bien {
-  width: 33%;
+  margin-top: 25px;
+  width: 33.33333%;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -204,13 +209,273 @@ header .profil a {
 .biensContainer .bien h3 {
   margin-top: 10px;
 }
-.biensContainer .bien p {
+.biensContainer .bien p:last-of-type {
   margin-top: 10px;
+  min-height: 5em;
+  flex: 1 0 auto;
 }
 .biensContainer .bien .btn {
-  margin-left: 15px;
+  margin-right: 15px;
   margin-top: 10px;
   font-size: 0.9em;
+  justify-self: flex-end;
+}
+
+.bien-single .top-container {
+  display: flex;
+  width: 90%;
+  margin: 50px auto 0;
+}
+.bien-single .top-container .img-container {
+  width: 60%;
+}
+.bien-single .top-container .info-container {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-color: #F5F9FC;
+}
+.bien-single .top-container .info-container .pictos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 30%;
+  color: #2d64A5;
+}
+.bien-single .top-container .info-container .pictos i {
+  font-size: 0.6em;
+}
+.bien-single .top-container .info-container .pictos i.fa-map-marker-alt {
+  font-size: 1.1em;
+}
+.bien-single .description {
+  width: 90%;
+  margin: 50px auto 0;
+}
+.bien-single .description p {
+  margin-top: 15px;
+}
+.bien-single .description p br {
+  line-height: 2em;
+  margin-top: 20px;
+}
+.bien-single .details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80%;
+  margin: 50px auto 0;
+}
+.bien-single .details .detail-container {
+  width: 16.6666%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+.bien-single .details .detail-container .picto-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2d64A5;
+  padding: 1px;
+  height: 60px;
+  width: 60px;
+  border-radius: 100px;
+}
+.bien-single .details .detail-container .picto-container img {
+  height: 50%;
+  width: auto;
+}
+.bien-single .details .detail-container span {
+  margin-top: 10px;
+  font-size: 1.1em;
+}
+.bien-single .map-container {
+  margin-top: 50px;
+}
+
+.bien-form {
+  background-position: center;
+  background-size: cover;
+  background-color: #F4F2F2;
+}
+.bien-form .inner {
+  background-color: #F5F9FC;
+  width: 70%;
+  margin: 50px auto;
+  padding: 15px;
+}
+.bien-form .inner h1 {
+  color: #2d64A5;
+  text-align: center;
+  margin-top: 25px;
+}
+.bien-form .inner h2 {
+  margin-top: 25px;
+}
+.bien-form .inner form input,
+.bien-form .inner form textarea,
+.bien-form .inner form select {
+  width: 100%;
+  border: none;
+  height: 50px;
+  font-size: 1.2em;
+  background-color: #F4F2F2;
+  padding-left: 20px;
+  margin-top: 15px;
+}
+.bien-form .inner form .ligne {
+  display: flex;
+}
+.bien-form .inner form .ligne div {
+  margin-right: 15px;
+}
+.bien-form .inner form .ligne div:last-of-type {
+  margin-left: 0;
+}
+.bien-form .inner form .ligne .numero {
+  width: 20%;
+}
+.bien-form .inner form .ligne .rue {
+  width: 40%;
+}
+.bien-form .inner form .ligne .complement {
+  width: 40%;
+}
+.bien-form .inner form .ligne .codepostal {
+  width: 50%;
+  margin-right: 15px;
+}
+.bien-form .inner form .ligne .ville {
+  width: 50%;
+}
+.bien-form .inner form textarea {
+  height: 200px;
+}
+.bien-form .inner form .img-upload {
+  margin-top: 15px;
+}
+.bien-form .inner form .img-upload input {
+  background: none;
+}
+.bien-form .inner form .images {
+  display: flex;
+}
+.bien-form .inner form .images .img-container {
+  margin-top: 15px;
+  position: relative;
+  width: 16.666666666%;
+  height: 100px;
+  background-position: center;
+  background-size: cover;
+  margin-right: 15px;
+}
+.bien-form .inner form .images .img-container:last-of-type {
+  margin-right: 0;
+}
+.bien-form .inner form .images .img-container a {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(50%, 50%);
+  display: block;
+  height: 1.5em;
+  line-height: 1.5em;
+  width: 1.5em;
+  text-align: center;
+  background-color: #FF5858;
+  border-radius: 1.5em;
+  text-decoration: none;
+  color: #F5F9FC;
+  transition: scale 0.3s;
+}
+.bien-form .inner form .caracteristiques .ligne1 {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 50px;
+}
+.bien-form .inner form .caracteristiques .ligne1 .formRow {
+  width: 33.3333%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 15px;
+  padding-right: 50px;
+}
+.bien-form .inner form .caracteristiques .ligne1 .formRow input {
+  width: 20px;
+  height: 20px;
+  margin-top: 0;
+  margin-left: 15px;
+}
+.bien-form .inner form .caracteristiques .ligne2 {
+  display: flex;
+}
+.bien-form .inner form .caracteristiques .ligne2 .selectInput {
+  width: 50%;
+}
+.bien-form .inner form .caracteristiques .ligne2 .selectInput:last-of-type {
+  margin-left: 15px;
+}
+.bien-form .inner form .div-right {
+  margin-top: 15px;
+}
+
+.profil-page {
+  margin-top: 50px;
+  display: flex;
+}
+.profil-page .profil-user {
+  width: 33.3333%;
+}
+.profil-page .profil-user h2 {
+  color: #2d64A5;
+  text-align: center;
+}
+.profil-page .profil-user .email {
+  color: #FF5858;
+  text-align: center;
+}
+.profil-page .profil-user .boutons {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin: 50px auto 0;
+}
+.profil-page .profil-user .boutons a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  padding: 10px;
+  color: #7F8282;
+  text-decoration: none;
+}
+.profil-page .profil-user .boutons a .image-container {
+  width: 50px;
+}
+.profil-page .profil-user .boutons a span {
+  text-align: center;
+  margin: 0 auto;
+}
+.profil-page .profil-user .boutons a.active {
+  background-color: #2d64A5;
+  color: white;
+  border-radius: 10px;
+}
+.profil-page .biensContainer {
+  width: 66.6666%;
+}
+.profil-page .biensContainer .bien {
+  width: 50%;
 }
 
 footer {

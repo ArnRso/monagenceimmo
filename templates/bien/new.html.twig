@@ -3,9 +3,13 @@
 {% block title %}New Bien{% endblock %}
 
 {% block body %}
-    <h1>Créez un nouveau bien</h1>
+    <div class="bien-form" style="background-image: url('{{ asset('assets/img/map-grayscale.svg') }}')">
+        <div class="inner">
+            <h1>Créez un nouveau bien</h1>
 
-    {{ include('bien/_form.html.twig', {'button_label': 'Créez'}) }}
+            {{ include('bien/_form.html.twig', {'button_label': 'Créez'}) }}
 
-    <a href="{{ path('bien_index') }}">Retour à la liste</a>
+            <a href="{{ path('bien_index') }}">Retour à la liste</a>
+        </div>
+    </div>
 {% endblock %}

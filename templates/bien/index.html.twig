@@ -3,7 +3,7 @@
 {% block title %}Bien index{% endblock %}
 
 {% block body %}
-    <div class="div-center">
+    <div class="div-center" style="margin-top: 50px">
         {% include '_partials/search_form.html.twig' %}
     </div>
     <div class="biensContainer index">
@@ -20,7 +20,7 @@
                 </a>
                 <h3>{{ bien.prix }}€</h3>
                 <p>{{ bien.description | easyadmin_truncate(150) | raw }}</p>
-                <div class="div-right">
+                <div class="div-left">
                     <a href="" class="btn btn-carre btn-bleu">Favoris</a>
                     <a href="{{ path("bien_show", {"id": bien.id}) }}" class="btn btn-carre btn-rouge">Plus d'infos</a>
                 </div>

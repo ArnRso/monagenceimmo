@@ -4,6 +4,7 @@ $blancCasse: #F5F9FC;
 $rouge: #FF5858;
 $noir: #444444;
 $gris: #F4F2F2;
+$grisProfil: #7F8282;
 $montserrat: 'Montserrat', sans-serif;
 
 * {
@@ -21,6 +22,10 @@ $montserrat: 'Montserrat', sans-serif;
   justify-content: space-between;
 }
 
+.div-left {
+  display: flex;
+}
+
 .div-right {
   display: flex;
   justify-content: flex-end;
@@ -31,7 +36,7 @@ $montserrat: 'Montserrat', sans-serif;
   justify-content: center;
 }
 
-
+// --------------------------------------------------------------------
 // HEADER
 header {
   display: flex;
@@ -78,7 +83,7 @@ header {
 }
 
 // FIN HEADER
-
+// --------------------------------------------------------------------
 // BOUTONS
 .btn {
   display: inline-block;
@@ -88,6 +93,7 @@ header {
   text-decoration: none;
   font-weight: bold;
   font-size: 1em;
+  text-align: center;
 
   &:hover {
     transform: scale(1.05)
@@ -126,8 +132,7 @@ header {
 }
 
 // FIN BOUTONS
-
-
+// --------------------------------------------------------------------
 // REGISTER & LOGIN
 .register,
 .login {
@@ -184,7 +189,7 @@ header {
 }
 
 //FIN REGISTER & LOGIN
-
+// --------------------------------------------------------------------
 // SEARCH-FORM
 .search-form {
   display: flex;
@@ -210,7 +215,7 @@ header {
 }
 
 // FIN SEARCH-FORM
-
+// --------------------------------------------------------------------
 // INDEX
 .index {
   flex: auto;
@@ -223,18 +228,18 @@ header {
 }
 
 // FIN INDEX
-
+// --------------------------------------------------------------------
 // BIENS CONTAINER
 .biensContainer {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
   flex-wrap: wrap;
   width: 80%;
-  margin: 0 auto;
+  margin: 0 auto 0;
+  justify-content: flex-start;
 
   .bien {
-    width: 33%;
+    margin-top: 25px;
+    width: 33.33333%;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -259,21 +264,383 @@ header {
       margin-top: 10px;
     }
 
-    p {
+    p:last-of-type {
       margin-top: 10px;
+      min-height: 5em;
+      flex: 1 0 auto;
     }
 
+
     .btn {
-      margin-left: 15px;
+      margin-right: 15px;
       margin-top: 10px;
       font-size: 0.9em;
+      justify-self: flex-end;
     }
   }
 }
 
 // FIN BIENS CONTAINER
+// --------------------------------------------------------------------
+// BIEN SINGLE
+.bien-single {
+  .top-container {
+    display: flex;
+    width: 90%;
+    margin: 50px auto 0;
+
+    .img-container {
+      width: 60%;
+    }
+
+    .info-container {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      background-size: cover;
+      background-position: center;
+      background-color: $blancCasse;
+
+      .pictos {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 30%;
+        color: $bleu;
+
+        i {
+          font-size: 0.6em;
 
 
+          &.fa-map-marker-alt {
+            font-size: 1.1em;
+          }
+        }
+      }
+
+      h1 {
+
+      }
+
+      h2 {
+
+      }
+
+      p.ville {
+
+      }
+
+      p.prix {
+
+      }
+
+      .btn-container {
+
+      }
+    }
+  }
+
+  .description {
+    width: 90%;
+    margin: 50px auto 0;
+
+    p {
+      margin-top: 15px;
+
+      br {
+        line-height: 2em;
+        margin-top: 20px;
+      }
+    }
+
+
+  }
+
+  .details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+    margin: 50px auto 0;
+
+
+    .detail-container {
+      width: 16.6666%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+
+      .picto-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $bleu;
+        padding: 1px;
+        $pictosize: 60px;
+        height: $pictosize;
+        width: $pictosize;
+        border-radius: 100px;
+
+        img {
+          height: 50%;
+          width: auto;
+        }
+      }
+
+      span {
+        margin-top: 10px;
+        font-size: 1.1em;
+
+      }
+    }
+  }
+
+  .map-container {
+    margin-top: 50px;
+  }
+}
+
+// FIN BIEN SINGLE
+// --------------------------------------------------------------------
+// BIEN FORM
+.bien-form {
+
+  background-position: center;
+  background-size: cover;
+  background-color: $gris;
+
+  .inner {
+    background-color: $blancCasse;
+    width: 70%;
+    margin: 50px auto;
+    padding: 15px;
+
+    h1 {
+      color: $bleu;
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    h2 {
+      margin-top: 25px;
+    }
+
+    form {
+      input,
+      textarea,
+      select {
+        width: 100%;
+        border: none;
+        height: 50px;
+        font-size: 1.2em;
+        background-color: $gris;
+        padding-left: 20px;
+        margin-top: 15px;
+      }
+
+      .ligne {
+        display: flex;
+
+        div {
+          margin-right: 15px;
+
+          &:last-of-type {
+            margin-left: 0;
+          }
+        }
+
+
+        .numero {
+          width: 20%;
+        }
+
+        .rue {
+          width: 40%;
+        }
+
+        .complement {
+          width: 40%
+        }
+
+        .codepostal {
+          width: 50%;
+          margin-right: 15px;
+        }
+
+        .ville {
+          width: 50%;
+        }
+      }
+
+      textarea {
+        height: 200px;
+      }
+
+      .img-upload {
+        margin-top: 15px;
+
+        input {
+          background: none;
+        }
+      }
+
+      .images {
+        display: flex;
+
+        .img-container {
+          margin-top: 15px;
+          position: relative;
+          width: 16.666666666%;
+          height: 100px;
+          background-position: center;
+          background-size: cover;
+          margin-right: 15px;
+
+          &:last-of-type {
+            margin-right: 0;
+          }
+
+          a {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            transform: translate(50%, 50%);
+            display: block;
+            height: 1.5em;
+            line-height: 1.5em;
+            width: 1.5em;
+            text-align: center;
+            background-color: $rouge;
+            border-radius: 1.5em;
+            text-decoration: none;
+            color: $blancCasse;
+            transition: scale 0.3s;
+
+            &:hover {
+
+            }
+          }
+        }
+      }
+
+      .caracteristiques {
+        .ligne1 {
+          margin-top: 15px;
+          display: flex;
+          flex-wrap: wrap;
+          padding: 0 50px;
+
+          .formRow {
+            width: 33.3333%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-top: 15px;
+            padding-right: 50px;
+
+            input {
+              width: 20px;
+              height: 20px;
+              margin-top: 0;
+              margin-left: 15px;
+            }
+          }
+        }
+
+        .ligne2 {
+          display: flex;
+
+          .selectInput {
+            width: 50%;
+
+            &:last-of-type {
+              margin-left: 15px;
+            }
+          }
+        }
+      }
+
+      .div-right {
+        margin-top: 15px;
+      }
+    }
+  }
+}
+
+//FIN BIEN FORM
+// --------------------------------------------------------------------
+// PROFIL
+.profil-page {
+  margin-top: 50px;
+  display: flex;
+
+  .profil-user {
+    width: 33.3333%;
+
+    h2 {
+      color: $bleu;
+      text-align: center;
+    }
+
+    .email {
+      color: $rouge;
+      text-align: center;
+    }
+
+    .boutons {
+      display: flex;
+      justify-content: space-between;
+      width:60%;
+      margin: 50px auto 0;
+
+      a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        padding: 10px;
+        color: $grisProfil;
+        text-decoration: none;
+
+        .image-container {
+          width: 50px;
+
+          img {
+
+          }
+        }
+
+        span {
+          text-align: center;
+          margin: 0 auto;
+        }
+
+        &.active {
+          background-color: $bleu;
+          color: white;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+
+  .biensContainer {
+    width: 66.6666%;
+    .bien {
+      width:50%;
+    }
+
+
+  }
+}
+
+// FIN PROFIL
+// --------------------------------------------------------------------
 // FOOTER
 footer {
   background-color: $bleu;
