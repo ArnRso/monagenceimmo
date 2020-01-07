@@ -1,39 +1,67 @@
 * {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
 
 .centVH {
   min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
 .div-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .div-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
   justify-content: flex-end;
 }
 
 .div-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
 header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   background-color: #2d64A5;
 }
 header .left-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 header .left-container .logo-container {
@@ -53,8 +81,14 @@ header .left-container nav a:hover {
   text-decoration: underline;
 }
 header .profil {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
   justify-content: flex-end;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 header .profil a {
@@ -72,6 +106,8 @@ header .profil a {
   text-align: center;
 }
 .btn:hover {
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
   transform: scale(1.05);
 }
 .btn.btn-pill {
@@ -105,9 +141,17 @@ header .profil a {
   background-color: #F5F9FC;
   background-size: cover;
   background-position: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex: 1;
+  -ms-flex: auto;
   flex: auto;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 .register .form-area,
@@ -138,7 +182,11 @@ header .profil a {
 }
 .register .form-area form .remember,
 .login .form-area form .remember {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
   justify-content: flex-end;
 }
 .register .form-area form .remember input,
@@ -149,8 +197,14 @@ header .profil a {
 }
 
 .search-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   background-color: #F5F9FC;
   border-radius: 100px;
@@ -170,27 +224,45 @@ header .profil a {
 }
 
 .index {
+  -webkit-box-flex: 1;
+  -ms-flex: auto;
   flex: auto;
   min-height: 30vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   background-position: center;
   background-size: cover;
 }
 
 .biensContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   width: 80%;
   margin: 0 auto 0;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
 }
 .biensContainer .bien {
   margin-top: 25px;
   width: 33.33333%;
   padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
 }
 .biensContainer .bien .thumbnail-container {
@@ -212,6 +284,8 @@ header .profil a {
 .biensContainer .bien p:last-of-type {
   margin-top: 10px;
   min-height: 5em;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
 .biensContainer .bien .btn {
@@ -222,7 +296,10 @@ header .profil a {
 }
 
 .bien-single .top-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   width: 90%;
   margin: 50px auto 0;
@@ -232,17 +309,32 @@ header .profil a {
 }
 .bien-single .top-container .info-container {
   width: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   background-size: cover;
   background-position: center;
   background-color: #F5F9FC;
 }
 .bien-single .top-container .info-container .pictos {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   width: 30%;
   color: #2d64A5;
@@ -265,23 +357,43 @@ header .profil a {
   margin-top: 20px;
 }
 .bien-single .details {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   width: 80%;
   margin: 50px auto 0;
 }
 .bien-single .details .detail-container {
   width: 16.6666%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   margin-top: 30px;
 }
 .bien-single .details .detail-container .picto-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   background-color: #2d64A5;
   padding: 1px;
@@ -332,7 +444,10 @@ header .profil a {
   margin-top: 15px;
 }
 .bien-form .inner form .ligne {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 .bien-form .inner form .ligne div {
@@ -367,7 +482,10 @@ header .profil a {
   background: none;
 }
 .bien-form .inner form .images {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 .bien-form .inner form .images .img-container {
@@ -383,6 +501,8 @@ header .profil a {
   position: absolute;
   bottom: 0;
   right: 0;
+  -webkit-transform: translate(50%, 50%);
+  -ms-transform: translate(50%, 50%);
   transform: translate(50%, 50%);
   display: block;
   height: 1.5em;
@@ -393,18 +513,29 @@ header .profil a {
   border-radius: 1.5em;
   text-decoration: none;
   color: #F5F9FC;
+  -webkit-transition: scale 0.3s;
+  -o-transition: scale 0.3s;
   transition: scale 0.3s;
 }
 .bien-form .inner form .caracteristiques .ligne1 {
   margin-top: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   padding: 0 50px;
 }
 .bien-form .inner form .caracteristiques .ligne1 .formRow {
   width: 33.3333%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
   justify-content: flex-end;
   margin-top: 15px;
   padding-right: 50px;
@@ -417,9 +548,12 @@ header .profil a {
   height: 20px;
   margin-top: 0;
   margin-left: 15px;
+  -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 .bien-form .inner form .caracteristiques .ligne2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .bien-form .inner form .caracteristiques .ligne2 .selectInput {
@@ -434,7 +568,10 @@ header .profil a {
 
 .profil-page {
   margin-top: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 .profil-page .profil-user {
@@ -449,15 +586,28 @@ header .profil a {
   text-align: center;
 }
 .profil-page .profil-user .boutons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   width: 60%;
   margin: 50px auto 0;
 }
 .profil-page .profil-user .boutons a {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   width: 100px;
   padding: 10px;
@@ -499,6 +649,9 @@ footer {
   }
 
   .search-form {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     width: 95%;
     border-radius: 10px;
@@ -509,7 +662,12 @@ footer {
     padding-top: 30px;
     width: 90%;
     margin: 0 auto 10px auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
   }
   .search-form .form-inside-div input, .search-form .form-inside-div select {
@@ -570,12 +728,16 @@ footer {
     width: 45% !important;
   }
   .bien-form .inner .details .ligne {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
   }
   .bien-form .inner .details .ligne > * {
     width: 45%;
   }
   .bien-form .inner .images {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
   }
   .bien-form .inner .images .img-container {

@@ -7,39 +7,11 @@ $gris: #F4F2F2;
 $grisProfil: #7F8282;
 $montserrat: 'Montserrat', sans-serif;
 
-$sm: 576px;
-$md: 768px;
-$lg: 992px;
-$xl: 1200px;
-
-@mixin sm {
-  @media (max-width: 575.98px) {
-    @content;
-  }
-}
-
-@mixin md {
-  @media (max-width: 767.98px) {
-    @content
-  }
-}
-
-@mixin lg {
-  @media (max-width: 991.98px) {
-    @content
-  }
-}
-
-@mixin xl {
-  @media (max-width: 1199.98px) {
-    @content
-  }
-}
-
 
 * {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-family: $montserrat;
 
@@ -47,35 +19,62 @@ $xl: 1200px;
 
 .centVH {
   min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
 .div-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .div-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
   justify-content: flex-end;
 }
 
 .div-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
 // --------------------------------------------------------------------
 // HEADER
 header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   background-color: $bleu;
 
   .left-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
     justify-content: flex-start;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 
     .logo-container {
@@ -104,8 +103,14 @@ header {
   }
 
   .profil {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
     justify-content: flex-end;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 
     a {
@@ -128,6 +133,8 @@ header {
   text-align: center;
 
   &:hover {
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
     transform: scale(1.05)
   }
 
@@ -171,9 +178,17 @@ header {
   background-color: $blancCasse;
   background-size: cover;
   background-position: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex: 1;
+  -ms-flex: auto;
   flex: auto;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 
   .form-area {
@@ -203,7 +218,11 @@ header {
       }
 
       .remember {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
         justify-content: flex-end;
 
         input {
@@ -220,8 +239,14 @@ header {
 // --------------------------------------------------------------------
 // SEARCH-FORM
 .search-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   background-color: $blancCasse;
   border-radius: 100px;
@@ -246,10 +271,18 @@ header {
 // --------------------------------------------------------------------
 // INDEX
 .index {
+  -webkit-box-flex: 1;
+  -ms-flex: auto;
   flex: auto;
   min-height: 30vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   background-position: center;
   background-size: cover;
@@ -259,17 +292,27 @@ header {
 // --------------------------------------------------------------------
 // BIENS CONTAINER
 .biensContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   width: 80%;
   margin: 0 auto 0;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
 
   .bien {
     margin-top: 25px;
     width: 33.33333%;
     padding: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
 
     .thumbnail-container {
@@ -295,6 +338,8 @@ header {
     p:last-of-type {
       margin-top: 10px;
       min-height: 5em;
+      -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
       flex: 1 0 auto;
     }
 
@@ -312,7 +357,10 @@ header {
 // BIEN SINGLE
 .bien-single {
   .top-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     width: 90%;
     margin: 50px auto 0;
@@ -323,17 +371,32 @@ header {
 
     .info-container {
       width: 40%;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
       flex-direction: column;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
       justify-content: space-between;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center;
       background-size: cover;
       background-position: center;
       background-color: $blancCasse;
 
       .pictos {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
         justify-content: space-between;
         width: 30%;
         color: $bleu;
@@ -379,23 +442,43 @@ header {
   }
 
   .details {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     width: 80%;
     margin: 50px auto 0;
 
     .detail-container {
       width: 16.6666%;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
       flex-direction: column;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
       justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center;
       margin-top: 30px;
 
       .picto-container {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
         background-color: $bleu;
         padding: 1px;
@@ -460,7 +543,10 @@ header {
       }
 
       .ligne {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -ms-flex-wrap: wrap;
         flex-wrap: wrap;
 
         div {
@@ -506,7 +592,10 @@ header {
       }
 
       .images {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -ms-flex-wrap: wrap;
         flex-wrap: wrap;
 
         .img-container {
@@ -523,6 +612,8 @@ header {
             position: absolute;
             bottom: 0;
             right: 0;
+            -webkit-transform: translate(50%, 50%);
+            -ms-transform: translate(50%, 50%);
             transform: translate(50%, 50%);
             display: block;
             height: 1.5em;
@@ -533,6 +624,8 @@ header {
             border-radius: 1.5em;
             text-decoration: none;
             color: $blancCasse;
+            -webkit-transition: scale 0.3s;
+            -o-transition: scale 0.3s;
             transition: scale 0.3s;
 
             &:hover {
@@ -544,14 +637,23 @@ header {
       .caracteristiques {
         .ligne1 {
           margin-top: 15px;
+          display: -webkit-box;
+          display: -ms-flexbox;
           display: flex;
+          -ms-flex-wrap: wrap;
           flex-wrap: wrap;
           padding: 0 50px;
 
           .formRow {
             width: 33.3333%;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
+            -webkit-box-pack: end;
+            -ms-flex-pack: end;
             justify-content: flex-end;
             margin-top: 15px;
             padding-right: 50px;
@@ -565,12 +667,15 @@ header {
               height: 20px;
               margin-top: 0;
               margin-left: 15px;
+              -ms-flex-negative: 0;
               flex-shrink: 0;
             }
           }
         }
 
         .ligne2 {
+          display: -webkit-box;
+          display: -ms-flexbox;
           display: flex;
 
           .selectInput {
@@ -595,7 +700,10 @@ header {
 // PROFIL
 .profil-page {
   margin-top: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 
   .profil-user {
@@ -612,15 +720,28 @@ header {
     }
 
     .boutons {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
       justify-content: space-between;
       width: 60%;
       margin: 50px auto 0;
 
       a {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
         width: 100px;
         padding: 10px;
@@ -682,6 +803,9 @@ footer {
   }
 
   .search-form {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     width: 95%;
     border-radius: 10px;
@@ -692,7 +816,12 @@ footer {
       padding-top: 30px;
       width: 90%;
       margin: 0 auto 10px auto;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
       flex-direction: column;
 
       input, select {
@@ -779,6 +908,8 @@ footer {
 
       .details {
         .ligne {
+          -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
           justify-content: space-between;
 
           & > * {
@@ -788,6 +919,8 @@ footer {
       }
 
       .images {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
 
         .img-container {
@@ -821,17 +954,15 @@ footer {
     }
 
     .biensContainer {
-      width:90%;
+      width: 90%;
+
       .bien {
         width: 100%;
+
         p {
           min-height: initial;
         }
       }
     }
   }
-
-
-  // FIN @MEDIA
 }
-
