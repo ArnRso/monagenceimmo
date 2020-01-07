@@ -223,6 +223,7 @@ header .profil a {
 
 .bien-single .top-container {
   display: flex;
+  flex-wrap: wrap;
   width: 90%;
   margin: 50px auto 0;
 }
@@ -332,6 +333,7 @@ header .profil a {
 }
 .bien-form .inner form .ligne {
   display: flex;
+  flex-wrap: wrap;
 }
 .bien-form .inner form .ligne div {
   margin-right: 15px;
@@ -366,6 +368,7 @@ header .profil a {
 }
 .bien-form .inner form .images {
   display: flex;
+  flex-wrap: wrap;
 }
 .bien-form .inner form .images .img-container {
   margin-top: 15px;
@@ -375,9 +378,6 @@ header .profil a {
   background-position: center;
   background-size: cover;
   margin-right: 15px;
-}
-.bien-form .inner form .images .img-container:last-of-type {
-  margin-right: 0;
 }
 .bien-form .inner form .images .img-container a {
   position: absolute;
@@ -409,11 +409,15 @@ header .profil a {
   margin-top: 15px;
   padding-right: 50px;
 }
+.bien-form .inner form .caracteristiques .ligne1 .formRow label {
+  text-align: right;
+}
 .bien-form .inner form .caracteristiques .ligne1 .formRow input {
   width: 20px;
   height: 20px;
   margin-top: 0;
   margin-left: 15px;
+  flex-shrink: 0;
 }
 .bien-form .inner form .caracteristiques .ligne2 {
   display: flex;
@@ -431,6 +435,7 @@ header .profil a {
 .profil-page {
   margin-top: 50px;
   display: flex;
+  flex-wrap: wrap;
 }
 .profil-page .profil-user {
   width: 33.3333%;
@@ -481,6 +486,125 @@ header .profil a {
 footer {
   background-color: #2d64A5;
   padding: 25px;
+}
+
+@media (max-width: 900px) {
+  header nav {
+    display: none;
+  }
+
+  .index .div-center {
+    width: 95vw;
+    margin: 0 auto;
+  }
+
+  .search-form {
+    flex-direction: column;
+    width: 95%;
+    border-radius: 10px;
+    padding-bottom: 10px;
+  }
+  .search-form .form-inside-div {
+    border-radius: 10px;
+    padding-top: 30px;
+    width: 90%;
+    margin: 0 auto 10px auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .search-form .form-inside-div input, .search-form .form-inside-div select {
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  .search-form a {
+    margin-bottom: 15px;
+  }
+
+  .biensContainer .bien {
+    width: 100%;
+  }
+  .biensContainer .bien p {
+    min-height: initial;
+  }
+
+  .bien-single .top-container .img-container {
+    width: 100%;
+  }
+  .bien-single .top-container .info-container {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .bien-single .top-container .info-container * {
+    margin-top: 10px;
+  }
+  .bien-single .top-container .info-container .btn-container {
+    margin-bottom: 10px;
+  }
+  .bien-single .details {
+    width: 90%;
+  }
+  .bien-single .details .detail-container {
+    width: 25%;
+  }
+  .bien-single .details .detail-container span {
+    font-size: 0.9em;
+  }
+
+  .login .form-area,
+.register .form-area {
+    width: 90%;
+  }
+
+  .bien-form .inner {
+    width: 90%;
+  }
+  .bien-form .inner .addresse .numero {
+    width: 15% !important;
+  }
+  .bien-form .inner .addresse .complement,
+.bien-form .inner .addresse .rue {
+    width: 35% !important;
+  }
+  .bien-form .inner .addresse .codepostal,
+.bien-form .inner .addresse .ville {
+    width: 45% !important;
+  }
+  .bien-form .inner .details .ligne {
+    justify-content: space-between;
+  }
+  .bien-form .inner .details .ligne > * {
+    width: 45%;
+  }
+  .bien-form .inner .images {
+    justify-content: center;
+  }
+  .bien-form .inner .images .img-container {
+    width: 33.3333% !important;
+    padding-right: 15px;
+  }
+  .bien-form .inner .images .img-container a {
+    z-index: 99;
+  }
+  .bien-form .inner .caracteristiques .ligne1 .formRow {
+    width: 50% !important;
+  }
+
+  .profil-page .profil-user {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .profil-page .profil-user .boutons {
+    margin-top: 10px;
+  }
+  .profil-page .biensContainer {
+    width: 90%;
+  }
+  .profil-page .biensContainer .bien {
+    width: 100%;
+  }
+  .profil-page .biensContainer .bien p {
+    min-height: initial;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

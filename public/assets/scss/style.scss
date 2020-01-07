@@ -7,13 +7,43 @@ $gris: #F4F2F2;
 $grisProfil: #7F8282;
 $montserrat: 'Montserrat', sans-serif;
 
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+@mixin sm {
+  @media (max-width: 575.98px) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: 767.98px) {
+    @content
+  }
+}
+
+@mixin lg {
+  @media (max-width: 991.98px) {
+    @content
+  }
+}
+
+@mixin xl {
+  @media (max-width: 1199.98px) {
+    @content
+  }
+}
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: $montserrat;
-}
 
+}
 
 .centVH {
   min-height: 100vh;
@@ -59,10 +89,12 @@ header {
     }
 
     nav {
+
       a {
         color: $blancCasse;
         text-decoration: none;
         margin-left: 15px;
+
 
         &:hover {
           text-decoration: underline;
@@ -160,8 +192,6 @@ header {
     }
 
     form {
-
-
       input {
         width: 100%;
         text-align: center;
@@ -183,8 +213,6 @@ header {
         }
       }
     }
-
-
   }
 }
 
@@ -270,7 +298,6 @@ header {
       flex: 1 0 auto;
     }
 
-
     .btn {
       margin-right: 15px;
       margin-top: 10px;
@@ -286,6 +313,7 @@ header {
 .bien-single {
   .top-container {
     display: flex;
+    flex-wrap: wrap;
     width: 90%;
     margin: 50px auto 0;
 
@@ -313,7 +341,6 @@ header {
         i {
           font-size: 0.6em;
 
-
           &.fa-map-marker-alt {
             font-size: 1.1em;
           }
@@ -321,23 +348,18 @@ header {
       }
 
       h1 {
-
       }
 
       h2 {
-
       }
 
       p.ville {
-
       }
 
       p.prix {
-
       }
 
       .btn-container {
-
       }
     }
   }
@@ -354,8 +376,6 @@ header {
         margin-top: 20px;
       }
     }
-
-
   }
 
   .details {
@@ -364,7 +384,6 @@ header {
     justify-content: center;
     width: 80%;
     margin: 50px auto 0;
-
 
     .detail-container {
       width: 16.6666%;
@@ -394,7 +413,6 @@ header {
       span {
         margin-top: 10px;
         font-size: 1.1em;
-
       }
     }
   }
@@ -408,7 +426,6 @@ header {
 // --------------------------------------------------------------------
 // BIEN FORM
 .bien-form {
-
   background-position: center;
   background-size: cover;
   background-color: $gris;
@@ -444,6 +461,7 @@ header {
 
       .ligne {
         display: flex;
+        flex-wrap: wrap;
 
         div {
           margin-right: 15px;
@@ -452,7 +470,6 @@ header {
             margin-left: 0;
           }
         }
-
 
         .numero {
           width: 20%;
@@ -490,6 +507,7 @@ header {
 
       .images {
         display: flex;
+        flex-wrap: wrap;
 
         .img-container {
           margin-top: 15px;
@@ -500,9 +518,6 @@ header {
           background-size: cover;
           margin-right: 15px;
 
-          &:last-of-type {
-            margin-right: 0;
-          }
 
           a {
             position: absolute;
@@ -521,7 +536,6 @@ header {
             transition: scale 0.3s;
 
             &:hover {
-
             }
           }
         }
@@ -542,11 +556,16 @@ header {
             margin-top: 15px;
             padding-right: 50px;
 
+            label {
+              text-align: right;
+            }
+
             input {
               width: 20px;
               height: 20px;
               margin-top: 0;
               margin-left: 15px;
+              flex-shrink: 0;
             }
           }
         }
@@ -577,6 +596,7 @@ header {
 .profil-page {
   margin-top: 50px;
   display: flex;
+  flex-wrap: wrap;
 
   .profil-user {
     width: 33.3333%;
@@ -594,7 +614,7 @@ header {
     .boutons {
       display: flex;
       justify-content: space-between;
-      width:60%;
+      width: 60%;
       margin: 50px auto 0;
 
       a {
@@ -611,7 +631,6 @@ header {
           width: 50px;
 
           img {
-
           }
         }
 
@@ -631,11 +650,10 @@ header {
 
   .biensContainer {
     width: 66.6666%;
+
     .bien {
-      width:50%;
+      width: 50%;
     }
-
-
   }
 }
 
@@ -648,3 +666,172 @@ footer {
 }
 
 // FIN FOOTER
+
+@media (max-width: 900px) {
+  header {
+    nav {
+      display: none;
+    }
+  }
+
+  .index {
+    .div-center {
+      width: 95vw;
+      margin: 0 auto;
+    }
+  }
+
+  .search-form {
+    flex-direction: column;
+    width: 95%;
+    border-radius: 10px;
+    padding-bottom: 10px;
+
+    .form-inside-div {
+      border-radius: 10px;
+      padding-top: 30px;
+      width: 90%;
+      margin: 0 auto 10px auto;
+      display: flex;
+      flex-direction: column;
+
+      input, select {
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+    }
+
+    a {
+      margin-bottom: 15px;
+    }
+  }
+
+  .biensContainer {
+    .bien {
+      width: 100%;
+
+      p {
+        min-height: initial;
+      }
+    }
+  }
+
+  .bien-single {
+    .top-container {
+
+      .img-container {
+        width: 100%;
+      }
+
+      .info-container {
+        width: 100%;
+        margin-top: 10px;
+
+        * {
+          margin-top: 10px;
+        }
+
+        .btn-container {
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    .details {
+      width: 90%;
+
+      .detail-container {
+        width: 25%;
+
+        span {
+          font-size: 0.9em;
+        }
+      }
+    }
+  }
+
+  .login,
+  .register {
+    .form-area {
+      width: 90%;
+    }
+  }
+
+  .bien-form {
+    .inner {
+      width: 90%;
+
+      .addresse {
+        .numero {
+          width: 15% !important;
+        }
+
+        .complement,
+        .rue {
+          width: 35% !important;
+        }
+
+        .codepostal,
+        .ville {
+          width: 45% !important;
+        }
+      }
+
+      .details {
+        .ligne {
+          justify-content: space-between;
+
+          & > * {
+            width: 45%;
+          }
+        }
+      }
+
+      .images {
+        justify-content: center;
+
+        .img-container {
+          width: 33.3333% !important;
+          padding-right: 15px;
+
+          a {
+            z-index: 99;
+          }
+        }
+      }
+
+      .caracteristiques {
+        .ligne1 {
+          .formRow {
+            width: 50% !important;
+          }
+        }
+      }
+    }
+  }
+
+  .profil-page {
+    .profil-user {
+      width: 90%;
+      margin: 0 auto;
+
+      .boutons {
+        margin-top: 10px;
+      }
+    }
+
+    .biensContainer {
+      width:90%;
+      .bien {
+        width: 100%;
+        p {
+          min-height: initial;
+        }
+      }
+    }
+  }
+
+
+  // FIN @MEDIA
+}
+
