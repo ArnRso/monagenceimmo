@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bien{% endblock %}
+{% block title %}{{ bien.titre }}{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('assets/splide-1.2.5/dist/css/splide.min.css') }}">
@@ -20,161 +20,161 @@
                 </div>
             </div>
             <div class="info-container" style="background-image: url('{{ asset('assets/img/map-grayscale.svg') }}')">
-            <div class="pictos">
-                <i class="fas fa-circle"></i>
-                <i class="fas fa-circle"></i>
-                <i class="fas fa-circle"></i>
-                <i class="fas fa-circle"></i>
-                <i class="fas fa-map-marker-alt"></i>
-                <i class="fas fa-circle"></i>
-                <i class="fas fa-circle"></i>
-                <i class="fas fa-circle"></i>
-                <i class="fas fa-circle"></i>
-            </div>
-            <h1 class="">{{ bien.titre }}</h1>
-            <h2 class="">{{ bien.nombreDePieces }} pièce{% if bien.nombreDePieces > 1 %}s{% endif %}
-                - {{ bien.surface }}m²</h2>
-            <p class="ville">{{ bien.ville }}</p>
-            <p class="prix">{{ bien.prix }} € / mois</p>
-            <div class="btn-container">
-                <a href="" class="btn btn-pill btn-noir">Partager</a>
-                <a href="" class="btn btn-pill btn-bleu">Favoris</a>
+                <div class="pictos">
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                </div>
+                <h1 class="">{{ bien.titre }}</h1>
+                <h2 class="">{{ bien.nombreDePieces }} pièce{% if bien.nombreDePieces > 1 %}s{% endif %}
+                    - {{ bien.surface }}m²</h2>
+                <p class="ville">{{ bien.ville }}</p>
+                <p class="prix">{{ bien.prix }} € / mois</p>
+                <div class="btn-container">
+                    <a href="" class="btn btn-pill btn-noir">Partager</a>
+                    <a href="" class="btn btn-pill btn-bleu">Favoris</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="description">
-        <div class="">
-            <h2>Description du bien</h2>
-            <p>
-                {{ bien.description | nl2br | raw}}
-            </p>
+        <div class="description">
+            <div class="">
+                <h2>Description du bien</h2>
+                <p>
+                    {{ bien.description | nl2br | raw }}
+                </p>
+            </div>
         </div>
-    </div>
 
-    <div class="details">
-        {% if bien.cheminee %}
-            <div class="detail-container">
-                <div class="picto-container">
-                    <img src="{{ asset('assets/img/cheminee.svg') }}" alt="" class="img-fluid">
+        <div class="details">
+            {% if bien.cheminee %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/cheminee.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Cheminée</span>
                 </div>
-                <span>Cheminée</span>
-            </div>
-        {% endif %}
-        {% if bien.belleVue %}
-            <div class="detail-container">
-                <div class="picto-container">
-                    <img src="{{ asset('assets/img/belle-vue.svg') }}" alt="" class="img-fluid">
+            {% endif %}
+            {% if bien.belleVue %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/belle-vue.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Belle Vue</span>
                 </div>
-                <span>Belle Vue</span>
-            </div>
-        {% endif %}
-        {% if bien.balcon %}
-            <div class="detail-container">
-                <div class="picto-container">
-                    <img src="{{ asset('assets/img/balcon.svg') }}" alt="" class="img-fluid">
+            {% endif %}
+            {% if bien.balcon %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/balcon.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Balcon</span>
                 </div>
-                <span>Balcon</span>
-            </div>
-        {% endif %}
-        {% if bien.piscine %}
-            <div class="detail-container">
-                <div class="picto-container">
-                    <img src="{{ asset('assets/img/piscine.svg') }}" alt="" class="img-fluid">
+            {% endif %}
+            {% if bien.piscine %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/piscine.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Piscine</span>
                 </div>
-                <span>Piscine</span>
-            </div>
-        {% endif %}
-        {% if bien.ascenseur %}
-            <div class="detail-container">
-                <div class="picto-container">
-                    <img src="{{ asset('assets/img/ascenseur.svg') }}" alt="" class="img-fluid">
+            {% endif %}
+            {% if bien.ascenseur %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/ascenseur.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Ascenseur</span>
                 </div>
-                <span>Ascenseur</span>
-            </div>
-        {% endif %}
-        {% if bien.terrasse %}
-            <div class="detail-container">
-                <div class="picto-container">
-                    <img src="{{ asset('assets/img/terrasse.svg') }}" alt="" class="img-fluid">
+            {% endif %}
+            {% if bien.terrasse %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/terrasse.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Terrasse</span>
                 </div>
-                <span>Terrasse</span>
-            </div>
-        {% endif %}
-        {% if bien.cave %}
-            <div class="detail-container">
-                <div class="picto-container">
-                    <img src="{{ asset('assets/img/cave.svg') }}" alt="" class="img-fluid">
+            {% endif %}
+            {% if bien.cave %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/cave.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Cave</span>
                 </div>
-                <span>Cave</span>
-            </div>
-        {% endif %}
-        {% if bien.parking %}
-            <div class="detail-container">
-                <div class="picto-container">
-                    <img src="{{ asset('assets/img/parking.svg') }}" alt="" class="img-fluid">
+            {% endif %}
+            {% if bien.parking %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/parking.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Parking</span>
                 </div>
-                <span>Parking</span>
-            </div>
-        {% endif %}
-        {% if bien.accesHandicape %}
-            <div class="detail-container">
-                <div class="picto-container">
-                    <img src="{{ asset('assets/img/handicap.svg') }}" alt="" class="img-fluid">
+            {% endif %}
+            {% if bien.accesHandicape %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/handicap.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Accessible PMR</span>
                 </div>
-                <span>Accessible PMR</span>
-            </div>
-        {% endif %}
-        {% if bien.baignoire %}
-            <div class="detail-container">
-                <div class="picto-container">
-                    <img src="{{ asset('assets/img/baignoire.svg') }}" alt="" class="img-fluid">
+            {% endif %}
+            {% if bien.baignoire %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/baignoire.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Baignoire</span>
                 </div>
-                <span>Baignoire</span>
-            </div>
-        {% endif %}
-        {% if bien.cuisineSeparee %}
-            <div class="detail-container">
-                <div class="picto-container">
-                    <img src="{{ asset('assets/img/cuisineseparee.svg') }}" alt="" class="img-fluid">
+            {% endif %}
+            {% if bien.cuisineSeparee %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/cuisineseparee.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Cuisine séparée</span>
                 </div>
-                <span>Cuisine séparée</span>
-            </div>
-        {% endif %}
-        {% if bien.meuble %}
-            <div class="detail-container">
-                <div class="picto-container">
-                    <img src="{{ asset('assets/img/meuble.svg') }}" alt="" class="img-fluid">
+            {% endif %}
+            {% if bien.meuble %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/meuble.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Meublé</span>
                 </div>
-                <span>Meublé</span>
-            </div>
-        {% else %}
-            <div class="detail-container">
-                <div class="picto-container">
-                    <img src="{{ asset('assets/img/meuble.svg') }}" alt="" class="img-fluid">
+            {% else %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/meuble.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Non-Meublé</span>
                 </div>
-                <span>Non-Meublé</span>
-            </div>
-        {% endif %}
-        {% if bien.colocation %}
-            <div class="detail-container">
-                <div class="picto-container">
-                    <img src="{{ asset('assets/img/colocation.svg') }}" alt="" class="img-fluid">
+            {% endif %}
+            {% if bien.colocation %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/colocation.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>Colocation</span>
                 </div>
-                <span>Colocation</span>
-            </div>
-        {% endif %}
-        {% if bien.wcSepares %}
-            <div class="detail-container">
-                <div class="picto-container">
-                    <img src="{{ asset('assets/img/wcsepares.svg') }}" alt="" class="img-fluid">
+            {% endif %}
+            {% if bien.wcSepares %}
+                <div class="detail-container">
+                    <div class="picto-container">
+                        <img src="{{ asset('assets/img/wcsepares.svg') }}" alt="" class="img-fluid">
+                    </div>
+                    <span>WC séparés</span>
                 </div>
-                <span>WC séparés</span>
-            </div>
-        {% endif %}
-    </div>
-    <div class="map-container">
-        <div class="" id="map" style="width:100%; height:400px; display: none"></div>
-    </div>
+            {% endif %}
+        </div>
+        <div class="map-container">
+            <div class="" id="map" style="display: none"></div>
+        </div>
     </div>
 
 {% endblock %}

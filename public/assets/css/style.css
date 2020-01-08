@@ -420,6 +420,8 @@ header .responsive {
   display: block;
 }
 .bien-single .map-container {
+  height: 400px;
+  width: 100%;
   margin-top: 3rem;
 }
 
@@ -681,6 +683,7 @@ footer {
     transform: translateY(99%);
     width: 100%;
     background-color: #2d64A5;
+    z-index: 9999;
   }
   header .responsive .inner {
     display: flex;
@@ -772,6 +775,9 @@ footer {
   }
   .bien-single .details .detail-container span {
     font-size: 0.9em;
+  }
+  .bien-single .map-container {
+    height: 70vh;
   }
 
   .login .form-area,

@@ -1,5 +1,13 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    {% if active == "profil" %}
+        Votre profil
+    {% elseif active == "favoris" %}
+        Vos favoris
+    {% endif %}
+{% endblock %}
+
 {% block body %}
     <div class="profil-page">
         <div class="profil-user">
