@@ -51,6 +51,7 @@ header {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  align-items: center;
   background-color: #2d64A5;
 }
 header .left-container {
@@ -65,8 +66,8 @@ header .left-container {
   align-items: center;
 }
 header .left-container .logo-container {
-  width: 100px;
-  margin: 10px;
+  width: 7rem;
+  margin: 1rem;
 }
 header .left-container .logo-container img {
   width: 100%;
@@ -75,7 +76,7 @@ header .left-container .logo-container img {
 header .left-container nav a {
   color: #F5F9FC;
   text-decoration: none;
-  margin-left: 15px;
+  margin-left: 1rem;
 }
 header .left-container nav a:hover {
   text-decoration: underline;
@@ -92,12 +93,18 @@ header .profil {
   align-items: center;
 }
 header .profil a {
-  margin-right: 15px;
+  margin-right: 1rem;
+}
+header .burger-div {
+  display: none;
+}
+header .responsive {
+  display: none;
 }
 
 .btn {
   display: inline-block;
-  padding: 15px 40px;
+  padding: 1rem 2.5rem;
   border-width: 3px;
   border-style: solid;
   text-decoration: none;
@@ -114,7 +121,7 @@ header .profil a {
   border-radius: 100px;
 }
 .btn.btn-carre {
-  border-radius: 5px;
+  border-radius: 0.3rem;
 }
 .btn.btn-blanc {
   border-color: #F5F9FC;
@@ -159,24 +166,24 @@ header .profil a {
   width: 50%;
   margin: 0 auto;
   background-color: white;
-  border-radius: 15px;
+  border-radius: 1rem;
   min-height: 0;
-  padding: 30px;
+  padding: 2rem;
 }
 .register .form-area h1,
 .login .form-area h1 {
   text-align: center;
   color: #2d64A5;
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
   font-size: 2.5em;
 }
 .register .form-area form input,
 .login .form-area form input {
   width: 100%;
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
   border: none;
-  height: 50px;
+  height: 3rem;
   font-size: 1.2em;
   background-color: #F4F2F2;
 }
@@ -191,9 +198,9 @@ header .profil a {
 }
 .register .form-area form .remember input,
 .login .form-area form .remember input {
-  height: 20px;
-  width: 20px;
-  margin-right: 15px;
+  height: 1.25rem;
+  width: 1.25rem;
+  margin-right: 1rem;
 }
 
 .search-form {
@@ -212,14 +219,14 @@ header .profil a {
 .search-form .form-inside-div {
   border-radius: 200px;
   overflow: hidden;
-  margin-right: 30px;
+  margin-right: 2rem;
 }
 .search-form .form-inside-div input,
 .search-form .form-inside-div select {
   height: calc(2em + 36px);
   border: none;
   background-color: #F4F2F2;
-  padding-left: 15px;
+  padding-left: 1rem;
   outline: none;
 }
 
@@ -254,9 +261,9 @@ header .profil a {
   justify-content: flex-start;
 }
 .biensContainer .bien {
-  margin-top: 25px;
+  margin-top: 1.5rem;
   width: 33.33333%;
-  padding: 10px;
+  padding: 0.6rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -266,7 +273,7 @@ header .profil a {
   flex-direction: column;
 }
 .biensContainer .bien .thumbnail-container {
-  height: 200px;
+  height: 13rem;
   background-size: cover;
   background-position: center;
 }
@@ -276,21 +283,21 @@ header .profil a {
 .biensContainer .bien h2 {
   color: #2d64A5;
   font-size: 1.4em;
-  margin-top: 15px;
+  margin-top: 1rem;
 }
 .biensContainer .bien h3 {
-  margin-top: 10px;
+  margin-top: 0.6rem;
 }
 .biensContainer .bien p:last-of-type {
-  margin-top: 10px;
+  margin-top: 0.6rem;
   min-height: 5em;
   -webkit-box-flex: 1;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
 .biensContainer .bien .btn {
-  margin-right: 15px;
-  margin-top: 10px;
+  margin-right: 1rem;
+  margin-top: 0.6rem;
   font-size: 0.9em;
   justify-self: flex-end;
 }
@@ -348,9 +355,10 @@ header .profil a {
 .bien-single .description {
   width: 90%;
   margin: 50px auto 0;
+  font-size: 1rem;
 }
 .bien-single .description p {
-  margin-top: 15px;
+  margin-top: 3rem;
 }
 .bien-single .description p br {
   line-height: 2em;
@@ -366,7 +374,7 @@ header .profil a {
   -ms-flex-pack: center;
   justify-content: center;
   width: 80%;
-  margin: 50px auto 0;
+  margin: 3rem auto 0;
 }
 .bien-single .details .detail-container {
   width: 16.6666%;
@@ -397,8 +405,8 @@ header .profil a {
   align-items: center;
   background-color: #2d64A5;
   padding: 1px;
-  height: 60px;
-  width: 60px;
+  height: 4rem;
+  width: 4rem;
   border-radius: 100px;
 }
 .bien-single .details .detail-container .picto-container img {
@@ -406,11 +414,13 @@ header .profil a {
   width: auto;
 }
 .bien-single .details .detail-container span {
-  margin-top: 10px;
+  margin-top: 0.6rem;
   font-size: 1.1em;
+  text-align: center;
+  display: block;
 }
 .bien-single .map-container {
-  margin-top: 50px;
+  margin-top: 3rem;
 }
 
 .bien-form {
@@ -422,26 +432,26 @@ header .profil a {
   background-color: #F5F9FC;
   width: 70%;
   margin: 50px auto;
-  padding: 15px;
+  padding: 1rem;
 }
 .bien-form .inner h1 {
   color: #2d64A5;
   text-align: center;
-  margin-top: 25px;
+  margin-top: 1.5rem;
 }
 .bien-form .inner h2 {
-  margin-top: 25px;
+  margin-top: 1.5rem;
 }
 .bien-form .inner form input,
 .bien-form .inner form textarea,
 .bien-form .inner form select {
   width: 100%;
   border: none;
-  height: 50px;
+  height: 3rem;
   font-size: 1.2em;
   background-color: #F4F2F2;
-  padding-left: 20px;
-  margin-top: 15px;
+  padding-left: 1.25rem;
+  margin-top: 1rem;
 }
 .bien-form .inner form .ligne {
   display: -webkit-box;
@@ -451,7 +461,7 @@ header .profil a {
   flex-wrap: wrap;
 }
 .bien-form .inner form .ligne div {
-  margin-right: 15px;
+  margin-right: 1rem;
 }
 .bien-form .inner form .ligne div:last-of-type {
   margin-left: 0;
@@ -467,16 +477,16 @@ header .profil a {
 }
 .bien-form .inner form .ligne .codepostal {
   width: 50%;
-  margin-right: 15px;
+  margin-right: 1rem;
 }
 .bien-form .inner form .ligne .ville {
   width: 50%;
 }
 .bien-form .inner form textarea {
-  height: 200px;
+  height: 12rem;
 }
 .bien-form .inner form .img-upload {
-  margin-top: 15px;
+  margin-top: 1rem;
 }
 .bien-form .inner form .img-upload input {
   background: none;
@@ -489,13 +499,13 @@ header .profil a {
   flex-wrap: wrap;
 }
 .bien-form .inner form .images .img-container {
-  margin-top: 15px;
+  margin-top: 1rem;
   position: relative;
   width: 16.666666666%;
-  height: 100px;
+  height: 6rem;
   background-position: center;
   background-size: cover;
-  margin-right: 15px;
+  margin-right: 1rem;
 }
 .bien-form .inner form .images .img-container a {
   position: absolute;
@@ -518,13 +528,13 @@ header .profil a {
   transition: scale 0.3s;
 }
 .bien-form .inner form .caracteristiques .ligne1 {
-  margin-top: 15px;
+  margin-top: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  padding: 0 50px;
+  padding: 0 3rem;
 }
 .bien-form .inner form .caracteristiques .ligne1 .formRow {
   width: 33.3333%;
@@ -537,17 +547,17 @@ header .profil a {
   -webkit-box-pack: end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  margin-top: 15px;
-  padding-right: 50px;
+  margin-top: 1rem;
+  padding-right: 3rem;
 }
 .bien-form .inner form .caracteristiques .ligne1 .formRow label {
   text-align: right;
 }
 .bien-form .inner form .caracteristiques .ligne1 .formRow input {
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   margin-top: 0;
-  margin-left: 15px;
+  margin-left: 1rem;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
@@ -560,14 +570,14 @@ header .profil a {
   width: 50%;
 }
 .bien-form .inner form .caracteristiques .ligne2 .selectInput:last-of-type {
-  margin-left: 15px;
+  margin-left: 1rem;
 }
 .bien-form .inner form .div-right {
-  margin-top: 15px;
+  margin-top: 1rem;
 }
 
 .profil-page {
-  margin-top: 50px;
+  margin-top: 3rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -593,7 +603,7 @@ header .profil a {
   -ms-flex-pack: justify;
   justify-content: space-between;
   width: 60%;
-  margin: 50px auto 0;
+  margin: 3rem auto 0;
 }
 .profil-page .profil-user .boutons a {
   display: -webkit-box;
@@ -609,13 +619,13 @@ header .profil a {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  width: 100px;
-  padding: 10px;
+  width: 6rem;
+  padding: 0.6rem;
   color: #7F8282;
   text-decoration: none;
 }
 .profil-page .profil-user .boutons a .image-container {
-  width: 50px;
+  width: 3rem;
 }
 .profil-page .profil-user .boutons a span {
   text-align: center;
@@ -624,7 +634,7 @@ header .profil a {
 .profil-page .profil-user .boutons a.active {
   background-color: #2d64A5;
   color: white;
-  border-radius: 10px;
+  border-radius: 0.6rem;
 }
 .profil-page .biensContainer {
   width: 66.6666%;
@@ -635,12 +645,67 @@ header .profil a {
 
 footer {
   background-color: #2d64A5;
-  padding: 25px;
+  padding: 4rem;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
+  * {
+    font-size: 32px;
+  }
+
+  header {
+    position: relative;
+  }
   header nav {
     display: none;
+  }
+  header .profil {
+    display: none;
+  }
+  header .burger-div {
+    margin-right: 2rem;
+    display: inline-flex;
+    width: 4rem;
+    height: 3rem;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  header .burger-div .slice {
+    background-color: #F5F9FC;
+    height: 20%;
+    border-radius: 3rem;
+  }
+  header .responsive {
+    position: absolute;
+    bottom: 0;
+    transform: translateY(99%);
+    width: 100%;
+    background-color: #2d64A5;
+  }
+  header .responsive .inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  header .responsive .inner nav {
+    display: inline-flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  header .responsive .inner nav a {
+    color: #F5F9FC;
+    font-size: 1.3rem;
+    text-decoration: none;
+    margin-top: 1rem;
+  }
+  header .responsive .inner nav a:hover {
+    text-decoration: underline;
+  }
+  header .responsive .inner .profil {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   .index .div-center {
@@ -654,14 +719,14 @@ footer {
     -ms-flex-direction: column;
     flex-direction: column;
     width: 95%;
-    border-radius: 10px;
-    padding-bottom: 10px;
+    border-radius: 0.6rem;
+    padding-bottom: 0.6rem;
   }
   .search-form .form-inside-div {
-    border-radius: 10px;
-    padding-top: 30px;
+    border-radius: 0.6rem;
+    padding-top: 2rem;
     width: 90%;
-    margin: 0 auto 10px auto;
+    margin: 0 auto 0.6rem auto;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -671,11 +736,11 @@ footer {
     flex-direction: column;
   }
   .search-form .form-inside-div input, .search-form .form-inside-div select {
-    margin-bottom: 10px;
-    border-radius: 5px;
+    margin-bottom: 0.6rem;
+    border-radius: 0.3rem;
   }
   .search-form a {
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
   }
 
   .biensContainer .bien {
@@ -690,13 +755,13 @@ footer {
   }
   .bien-single .top-container .info-container {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 0.6rem;
   }
   .bien-single .top-container .info-container * {
-    margin-top: 10px;
+    margin-top: 0.6rem;
   }
   .bien-single .top-container .info-container .btn-container {
-    margin-bottom: 10px;
+    margin-bottom: 0.6rem;
   }
   .bien-single .details {
     width: 90%;
@@ -742,7 +807,7 @@ footer {
   }
   .bien-form .inner .images .img-container {
     width: 33.3333% !important;
-    padding-right: 15px;
+    padding-right: 1rem;
   }
   .bien-form .inner .images .img-container a {
     z-index: 99;
@@ -756,7 +821,7 @@ footer {
     margin: 0 auto;
   }
   .profil-page .profil-user .boutons {
-    margin-top: 10px;
+    margin-top: 0.6rem;
   }
   .profil-page .biensContainer {
     width: 90%;

@@ -22,4 +22,27 @@
             <a href="{{ path('app_register') }}" class="btn btn-pill btn-blanc">S'inscrire</a>
         {% endif %}
     </div>
+    <div class="burger-div">
+        <div class="slice"></div>
+        <div class="slice"></div>
+        <div class="slice"></div>
+    </div>
+    <div class="responsive">
+        <div class="inner">
+            <nav>
+                <a href="{{ path('bien_index') }}">Trouver une location</a>
+                <a href="{{ path('bien_new') }}">Déposer mon annonce</a>
+                <a href="{{ path('favoris') }}">Mes Favoris</a>
+            </nav>
+            <div class="profil">
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <a href="{{ path('profil') }}" class="btn btn-pill btn-rouge">Mon profil</a>
+                    <a href="{{ path('app_logout') }}" class="btn btn-pill btn-blanc">Se déconnecter</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}" class="btn btn-pill btn-rouge">Se connecter</a>
+                    <a href="{{ path('app_register') }}" class="btn btn-pill btn-blanc">S'inscrire</a>
+                {% endif %}
+            </div>
+        </div>    
+    </div>
 </header>
