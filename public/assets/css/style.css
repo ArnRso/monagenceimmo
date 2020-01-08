@@ -649,7 +649,7 @@ footer {
 }
 
 @media (max-width: 1200px) {
-  * {
+  html {
     font-size: 32px;
   }
 
@@ -738,6 +738,7 @@ footer {
   .search-form .form-inside-div input, .search-form .form-inside-div select {
     margin-bottom: 0.6rem;
     border-radius: 0.3rem;
+    font-size: 1rem;
   }
   .search-form a {
     margin-bottom: 1rem;
