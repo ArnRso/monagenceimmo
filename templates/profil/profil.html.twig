@@ -53,7 +53,11 @@
                         <h3>{{ bien.prix }}€</h3>
                         <p>{{ bien.description | easyadmin_truncate(150) | raw }}</p>
                         <div class="div-left">
-                            <a href="" class="btn btn-carre btn-bleu">Favoris</a>
+                            {% if active == profil %}
+                                <a href="{{ path('bien_edit', {'id': bien.id}) }}" class="btn btn-carre btn-bleu">Modifier</a>
+                            {% else %}
+                                <a href="" class="btn btn-carre btn-bleu">Favoris</a>
+                            {% endif %}
                             <a href="{{ path("bien_show", {"id": bien.id}) }}" class="btn btn-carre btn-rouge">Plus
                                 d'infos</a>
                         </div>
