@@ -157,7 +157,7 @@ class BienController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/delete", name="bien_delete", methods={"DELETE"})
+     * @Route("/{id}/delete", name="bien_delete")
      * @param Request $request
      * @param Bien $bien
      * @return Response
