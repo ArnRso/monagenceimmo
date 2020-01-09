@@ -46,8 +46,9 @@ class BienController extends AbstractController
         if (strlen($prixMax) == 0) {
             $prixMax = 9999999999;
         }
+        $bonus= $request->query->get('bonus');
         $surfaceMin = $request->query->get('surfaceMin');
-        $biens = $bienRepository->simpleSearch($localisation, $prixMax, $surfaceMin);
+        $biens = $bienRepository->simpleSearch($localisation, $prixMax, $surfaceMin, $bonus);
         return $this->render('bien/index.html.twig', [
             'biens' => $biens
         ]);
