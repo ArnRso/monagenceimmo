@@ -25,9 +25,9 @@ class BienRepository extends ServiceEntityRepository
         $query = $qb->select('bien')
             ->where('bien.ville LIKE :ville')
             ->setParameter('ville', '%' . $localisation . '%')
-            ->andWhere('bien.prix < :prixMax')
+            ->andWhere('bien.prix <= :prixMax')
             ->setParameter('prixMax', intval($prixMax))
-            ->andWhere('bien.surface > :surfaceMin')
+            ->andWhere('bien.surface >= :surfaceMin')
             ->setParameter('surfaceMin', intval($surfaceMin));
 
         if ($bonus == 'maison') {
