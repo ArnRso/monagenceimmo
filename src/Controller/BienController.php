@@ -46,7 +46,7 @@ class BienController extends AbstractController
         if (strlen($prixMax) == 0) {
             $prixMax = 9999999999;
         }
-        $bonus= $request->query->get('bonus');
+        $bonus = $request->query->get('bonus');
         $surfaceMin = $request->query->get('surfaceMin');
         $biens = $bienRepository->simpleSearch($localisation, $prixMax, $surfaceMin, $bonus);
         return $this->render('bien/index.html.twig', [
@@ -61,7 +61,7 @@ class BienController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $bien = new Bien();
         $form = $this->createForm(BienType::class, $bien);
         $form->handleRequest($request);
@@ -157,17 +157,21 @@ class BienController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="bien_delete", methods={"DELETE"})
+     * @Route("/{id}/delete", name="bien_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Bien $bien
+     * @return Response
      */
     public function delete(Request $request, Bien $bien): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $bien->getId(), $request->request->get('_token'))) {
+        if ($this->getUser() == $bien->getAuthor()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($bien);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('bien_index');
+
+        return $this->redirectToRoute('profil');
     }
 
     /**
@@ -214,7 +218,7 @@ class BienController extends AbstractController
             $entityManager->flush();
 
             return $this->json([
-                'code'=>200,
+                'code' => 200,
                 'message' => 'Retiré des favoris avec succès',
                 'favoris' => count($bien->getLikedBy())
             ],
