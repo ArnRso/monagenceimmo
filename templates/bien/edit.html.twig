@@ -7,9 +7,13 @@
         <div class="inner">
             <h1>Modifier le bien</h1>
 
-            {{ include('bien/_form.html.twig', {'button_label': 'Update'}) }}
+            {{ include('bien/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-            {{ include('bien/_delete_form.html.twig') }}
+
+            <div class="supprimer">
+                <a href="" class="btn btn-pill btn-rouge"> Supprimer le bien</a>
+            </div>
+{#            {{ include('bien/_delete_form.html.twig') }}#}
         </div>
     </div>
 {% endblock %}

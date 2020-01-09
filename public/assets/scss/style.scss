@@ -7,6 +7,45 @@ $gris: #F4F2F2;
 $grisProfil: #7F8282;
 $montserrat: 'Montserrat', sans-serif;
 
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+@mixin sm {
+  @media (max-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (max-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (max-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (max-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
 
 * {
   margin: 0;
@@ -67,6 +106,10 @@ header {
   align-items: center;
   background-color: $bleu;
 
+  @include xl {
+    position: relative;
+  }
+
   .left-container {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -82,6 +125,10 @@ header {
       width: 7rem;
       margin: 1rem;
 
+      @include xl {
+        width: 3rem;
+      }
+
       img {
         width: 100%;
         height: auto;
@@ -89,6 +136,9 @@ header {
     }
 
     nav {
+      @include xl {
+        display: none;
+      }
 
       a {
         color: $blancCasse;
@@ -115,6 +165,10 @@ header {
     -ms-flex-align: center;
     align-items: center;
 
+    @include xl {
+      display: none;
+    }
+
     a {
       margin-right: 1rem;
     }
@@ -122,10 +176,75 @@ header {
 
   .burger-div {
     display: none;
+
+    @include xl {
+      margin-right: 2rem;
+      display: inline-flex;
+      width: 3rem;
+      height: 3rem;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .slice {
+        background-color: $blancCasse;
+        height: 20%;
+        border-radius: 3rem;
+      }
+    }
   }
 
   .responsive {
     display: none;
+
+    @include xl {
+      position: absolute;
+      bottom: 0;
+      transform: translateY(99%);
+      width: 100%;
+      background-color: $bleu;
+      z-index: 9999;
+
+      .inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        nav {
+          display: inline-flex;
+          flex-direction: column;
+          text-align: center;
+
+          a {
+            color: $blancCasse;
+            font-size: 1.3rem;
+            text-decoration: none;
+            margin-top: 1rem;
+
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+
+        .profil {
+          display: inline-flex;
+
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+
+          a {
+            margin-right: 0;
+
+            &.btn {
+              padding: 0.7rem 1.5rem;
+              font-size: .9rem;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -209,6 +328,10 @@ header {
     min-height: 0;
     padding: 2rem;
 
+    @include lg {
+      width: 90%;
+    }
+
     h1 {
       text-align: center;
       color: $bleu;
@@ -261,10 +384,34 @@ header {
   background-color: $blancCasse;
   border-radius: 100px;
 
+  @include xl {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 95%;
+    border-radius: .6rem;
+    padding-bottom: .6rem;
+  }
+
   .form-inside-div {
     border-radius: 200px;
     overflow: hidden;
     margin-right: 2rem;
+
+    @include xl {
+      border-radius: .6rem;
+      padding-top: 2rem;
+      width: 90%;
+      margin: 0 auto .6rem auto;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+    }
 
     input,
     select {
@@ -273,6 +420,18 @@ header {
       background-color: $gris;
       padding-left: 1rem;
       outline: none;
+
+      @include xl {
+        margin-bottom: .6rem;
+        border-radius: .3rem;
+        font-size: 1rem;
+      }
+    }
+
+    a {
+      @include xl {
+        margin-bottom: 1rem;
+      }
     }
   }
 }
@@ -296,6 +455,20 @@ header {
   align-items: center;
   background-position: center;
   background-size: cover;
+
+  @include xl {
+    .div-center {
+      width: 70vw;
+      margin:0 auto;
+    }
+  }
+
+  @include lg {
+    .div-center {
+      width: 95vw;
+      margin: 0 auto;
+    }
+  }
 }
 
 // FIN INDEX
@@ -325,6 +498,14 @@ header {
     -ms-flex-direction: column;
     flex-direction: column;
 
+
+    @include xl {
+      width: 50%;
+    }
+    @include lg {
+      width: 100%;
+    }
+
     .thumbnail-container {
       height: 13rem;
       background-size: cover;
@@ -353,11 +534,21 @@ header {
       flex: 1 0 auto;
     }
 
+    @include lg {
+      p {
+        min-height: initial !important;
+      }
+    }
+
     .btn {
       margin-right: 1rem;
       margin-top: .6rem;
       font-size: 0.9em;
       justify-self: flex-end;
+
+      @include lg {
+        padding: .8rem 1.5rem;
+      }
     }
   }
 }
@@ -377,6 +568,9 @@ header {
 
     .img-container {
       width: 60%;
+      @include lg {
+        width: 100%;
+      }
     }
 
     .info-container {
@@ -397,6 +591,16 @@ header {
       background-size: cover;
       background-position: center;
       background-color: $blancCasse;
+      text-align: center;
+
+      @include lg {
+        width: 100%;
+        margin-top: .6rem;
+
+        * {
+          margin-top: .6rem;
+        }
+      }
 
       .pictos {
         display: -webkit-box;
@@ -433,6 +637,9 @@ header {
       }
 
       .btn-container {
+        @include lg {
+          margin-bottom: .6rem;
+        }
       }
     }
   }
@@ -464,6 +671,10 @@ header {
     width: 80%;
     margin: 3rem auto 0;
 
+    @include lg {
+      width: 90%;
+    }
+
     .detail-container {
       width: 16.6666%;
       display: -webkit-box;
@@ -480,6 +691,10 @@ header {
       -ms-flex-align: center;
       align-items: center;
       margin-top: 30px;
+
+      @include lg {
+        width: 25%;
+      }
 
       .picto-container {
         display: -webkit-box;
@@ -509,12 +724,22 @@ header {
         font-size: 1.1em;
         text-align: center;
         display: block;
+
+        @include lg {
+          font-size: .9rem;
+        }
       }
     }
   }
 
   .map-container {
     margin-top: 3rem;
+
+    @include xl {
+      #map {
+        height: 75vh !important;
+      }
+    }
   }
 }
 
@@ -531,6 +756,10 @@ header {
     width: 70%;
     margin: 50px auto;
     padding: 1rem;
+
+    @include lg {
+      width: 90%;
+    }
 
     h1 {
       color: $bleu;
@@ -565,30 +794,65 @@ header {
 
         div {
           margin-right: 1rem;
+          @include xl {
+            margin-right: 0;
+            width: 100%;
+          }
 
           &:last-of-type {
             margin-left: 0;
           }
         }
 
+
         .numero {
           width: 15%;
+          @include xl {
+            width: 100%;
+          }
         }
 
         .rue {
           width: 40%;
+          @include xl {
+            width: 100%;
+          }
         }
 
         .complement {
-          width: 40%
+          width: 40%;
+          @include xl {
+            width: 100%;
+          }
         }
 
         .codepostal {
           width: 48%;
+          @include xl {
+            width: 100%;
+          }
         }
 
         .ville {
           width: 48%;
+          @include xl {
+            width: 100%;
+          }
+        }
+      }
+
+      .details {
+        @include xl {
+          .ligne {
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+          }
+
+          & > * {
+            width: 100%;
+            margin-right: 0 !important;
+          }
         }
       }
 
@@ -611,6 +875,12 @@ header {
         -ms-flex-wrap: wrap;
         flex-wrap: wrap;
 
+        @include lg {
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+        }
+
         .img-container {
           margin-top: 1rem;
           position: relative;
@@ -619,6 +889,11 @@ header {
           background-position: center;
           background-size: cover;
           margin-right: 1rem;
+
+          @include lg {
+            width: 33.3333% !important;
+            padding-right: 1rem;
+          }
 
 
           a {
@@ -641,6 +916,10 @@ header {
             -o-transition: scale 0.3s;
             transition: scale 0.3s;
 
+            @include lg {
+              z-index: 99;
+            }
+
             &:hover {
             }
           }
@@ -657,6 +936,10 @@ header {
           flex-wrap: wrap;
           padding: 0 3rem;
 
+          @include lg {
+            padding: 0;
+          }
+
           .formRow {
             width: 33.3333%;
             display: -webkit-box;
@@ -670,6 +953,11 @@ header {
             justify-content: flex-end;
             margin-top: 1rem;
             padding-right: 3rem;
+
+            @include lg {
+              width: 50%;
+              padding-right: 1rem;
+            }
 
             label {
               text-align: right;
@@ -706,6 +994,20 @@ header {
       }
     }
   }
+
+  .supprimer {
+    position: relative;
+    a {
+      position: absolute;
+      transform: translateY(-100%);
+
+      @include sm {
+        position: initial;
+        margin-top: 1rem;
+        transform: translateY(0);
+      }
+    }
+  }
 }
 
 //FIN BIEN FORM
@@ -721,6 +1023,10 @@ header {
 
   .profil-user {
     width: 33.3333%;
+    @include lg {
+      width: 90%;
+      margin: 0 auto;
+    }
 
     h2 {
       color: $bleu;
@@ -742,6 +1048,10 @@ header {
       justify-content: space-between;
       width: 60%;
       margin: 3rem auto 0;
+
+      @include lg {
+        margin-top: .6rem;
+      }
 
       a {
         display: -webkit-box;
@@ -786,8 +1096,22 @@ header {
   .biensContainer {
     width: 66.6666%;
 
+    @include lg {
+      width: 90%;
+    }
+
     .bien {
       width: 50%;
+
+      @include lg {
+        width: 100%;
+      }
+
+      p {
+        @include lg {
+          min-height: initial;
+        }
+      }
     }
   }
 }
@@ -802,249 +1126,3 @@ footer {
 
 // FIN FOOTER
 
-@media (max-width: 1200px) {
-  html {
-    font-size: 32px;
-  }
-
-  header {
-    position: relative;
-
-    nav {
-      display: none;
-    }
-
-    .profil {
-      display: none;
-    }
-
-    .burger-div {
-      margin-right: 2rem;
-      display: inline-flex;
-      width: 4rem;
-      height: 3rem;
-      flex-direction: column;
-      justify-content: space-between;
-
-      .slice {
-        background-color: $blancCasse;
-        height: 20%;
-        border-radius: 3rem;
-      }
-    }
-
-    .responsive {
-      position: absolute;
-      bottom: 0;
-      transform: translateY(99%);
-      width: 100%;
-      background-color: $bleu;
-      z-index: 9999;
-
-      .inner {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-
-        nav {
-          display: inline-flex;
-          flex-direction: column;
-          text-align: center;
-
-          a {
-            color: $blancCasse;
-            font-size: 1.3rem;
-            text-decoration: none;
-            margin-top: 1rem;
-
-
-            &:hover {
-              text-decoration: underline;
-            }
-          }
-        }
-
-        .profil {
-          display: block;
-          margin-top: 1rem;
-          margin-bottom: 1rem;
-        }
-      }
-
-
-    }
-  }
-
-  .index {
-    .div-center {
-      width: 95vw;
-      margin: 0 auto;
-    }
-  }
-
-  .search-form {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    width: 95%;
-    border-radius: .6rem;
-    padding-bottom: .6rem;
-
-    .form-inside-div {
-      border-radius: .6rem;
-      padding-top: 2rem;
-      width: 90%;
-      margin: 0 auto .6rem auto;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-      flex-direction: column;
-
-      input, select {
-        margin-bottom: .6rem;
-        border-radius: .3rem;
-        font-size: 1rem;
-      }
-    }
-
-    a {
-      margin-bottom: 1rem;
-    }
-  }
-
-  .biensContainer {
-    .bien {
-      width: 100%;
-
-      p {
-        min-height: initial;
-      }
-    }
-  }
-
-  .bien-single {
-    .top-container {
-
-      .img-container {
-        width: 100%;
-      }
-
-      .info-container {
-        width: 100%;
-        margin-top: .6rem;
-
-        * {
-          margin-top: .6rem;
-        }
-
-        .btn-container {
-          margin-bottom: .6rem;
-        }
-      }
-    }
-
-    .details {
-      width: 90%;
-
-      .detail-container {
-        width: 25%;
-
-        span {
-          font-size: 0.9em;
-        }
-      }
-    }
-  }
-
-  .login,
-  .register {
-    .form-area {
-      width: 90%;
-    }
-  }
-
-  .bien-form {
-    .inner {
-      width: 90%;
-
-      .addresse {
-        .numero {
-          width: 15% !important;
-        }
-
-        .complement,
-        .rue {
-          width: 35% !important;
-        }
-
-        .codepostal,
-        .ville {
-          width: 45% !important;
-        }
-      }
-
-      .details {
-        .ligne {
-          -webkit-box-pack: justify;
-          -ms-flex-pack: justify;
-          justify-content: space-between;
-
-          & > * {
-            width: 45%;
-          }
-        }
-      }
-
-      .images {
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-
-        .img-container {
-          width: 33.3333% !important;
-          padding-right: 1rem;
-
-          a {
-            z-index: 99;
-          }
-        }
-      }
-
-      .caracteristiques {
-        .ligne1 {
-          .formRow {
-            width: 50% !important;
-          }
-        }
-      }
-    }
-  }
-
-  .profil-page {
-    .profil-user {
-      width: 90%;
-      margin: 0 auto;
-
-      .boutons {
-        margin-top: .6rem;
-      }
-    }
-
-    .biensContainer {
-      width: 90%;
-
-      .bien {
-        width: 100%;
-
-        p {
-          min-height: initial;
-        }
-      }
-    }
-  }
-}
