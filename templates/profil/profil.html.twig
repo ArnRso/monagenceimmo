@@ -56,7 +56,19 @@
                             {% if active == "profil" %}
                                 <a href="{{ path('bien_edit', {'id': bien.id}) }}" class="btn btn-carre btn-bleu">Modifier</a>
                             {% else %}
-                                <a href="" class="btn btn-carre btn-bleu">Favoris</a>
+                                <a href="{{ path('bien_favoris', {'id': bien.id}) }}"
+                                   class="btn btn-carre btn-bleu js-favoris">
+                                    {% if app.user and bien.isLikedByUser(app.user) %}
+                                        <i class="fas fa-heart"></i>
+                                    {% else %}
+                                        <i class="far fa-heart"></i>
+
+                                    {% endif %}
+                                    <span class="js-favoris-num">{{ bien.likedby | length }}</span>
+                                    {% dump bien.likedBy %}
+                                    <span class="js-label">Favoris</span>
+
+                                </a>
                             {% endif %}
                             <a href="{{ path("bien_show", {"id": bien.id}) }}" class="btn btn-carre btn-rouge">Plus
                                 d'infos</a>
@@ -70,4 +82,9 @@
         </div>
     </div>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="{{ asset('assets/js/favoris.js') }}" type="text/javascript"></script>
 {% endblock %}

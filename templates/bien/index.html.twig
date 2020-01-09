@@ -21,11 +21,27 @@
                 <h3>{{ bien.prix }}€</h3>
                 <p>{{ bien.description | easyadmin_truncate(150) | raw }}</p>
                 <div class="div-left">
-                    <a href="" class="btn btn-carre btn-bleu">Favoris</a>
+                    <a href="{{ path('bien_favoris', {'id': bien.id}) }}" class="btn btn-carre btn-bleu js-favoris">
+                        {% if app.user and bien.isLikedByUser(app.user) %}
+                            <i class="fas fa-heart"></i>
+                        {% else %}
+                            <i class="far fa-heart"></i>
+
+                        {% endif %}
+                        <span class="js-favoris-num">{{ bien.likedby | length }}</span>
+                        {% dump bien.likedBy %}
+                        <span class="js-label">Favoris</span>
+
+                    </a>
                     <a href="{{ path("bien_show", {"id": bien.id}) }}" class="btn btn-carre btn-rouge">Plus d'infos</a>
                 </div>
             </div>
         {% endfor %}
     </div>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="{{ asset('assets/js/favoris.js') }}" type="text/javascript"></script>
 {% endblock %}

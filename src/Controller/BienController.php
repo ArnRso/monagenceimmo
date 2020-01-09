@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Bien;
+use App\Entity\User;
 use App\Form\BienType;
 use App\Repository\BienRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -186,5 +187,48 @@ class BienController extends AbstractController
         $entityManager->persist($bien);
         $entityManager->flush();
         return $this->redirectToRoute('bien_edit', ['id' => $id]);
+    }
+
+    /**
+     * Permet d'ajouter ou de retirer des favoris un bien
+     * @Route("/{id}/favoris", name="bien_favoris")
+     * @param Bien $bien
+     * @param EntityManagerInterface $entityManager
+     * @param BienRepository $bienRepository
+     * @return Response
+     */
+    public function favoris(Bien $bien, EntityManagerInterface $entityManager, BienRepository $bienRepository): Response
+    {
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->json([
+                'code' => 403,
+                'message' => "Unauthorized"
+            ], 403);
+        }
+
+        if ($bien->isLikedByUser($user)) {
+            $bien->removeLikedBy($user);
+            $entityManager->persist($bien);
+            $entityManager->flush();
+
+            return $this->json([
+                'code'=>200,
+                'message' => 'Retiré des favoris avec succès',
+                'favoris' => count($bien->getLikedBy())
+            ],
+                200);
+        }
+
+        $bien->addLikedBy($user);
+        $entityManager->persist($bien);
+        $entityManager->flush();
+        return $this->json(
+            [
+                'code' => 200,
+                'message' => 'Ajouté aux favoris avec succès',
+                'favoris' => count($bien->getLikedBy())
+            ],
+            200);
     }
 }

@@ -38,7 +38,18 @@
                 <p class="prix">{{ bien.prix }} € / mois</p>
                 <div class="btn-container">
                     <a href="" class="btn btn-pill btn-noir">Partager</a>
-                    <a href="" class="btn btn-pill btn-bleu">Favoris</a>
+                    <a href="{{ path('bien_favoris', {'id': bien.id}) }}" class="btn btn-pill btn-bleu js-favoris">
+                        {% if app.user and bien.isLikedByUser(app.user) %}
+                            <i class="fas fa-heart"></i>
+                        {% else %}
+                            <i class="far fa-heart"></i>
+
+                        {% endif %}
+                        <span class="js-favoris-num">{{ bien.likedby | length }}</span>
+                        {% dump bien.likedBy %}
+                        <span class="js-label">Favoris</span>
+
+                    </a>
                 </div>
             </div>
         </div>
@@ -232,6 +243,9 @@
             }).mount();
         });
     </script>
+
+    <script src="{{ asset('assets/js/favoris.js') }}" type="text/javascript"></script>
+
 
 
 {% endblock %}

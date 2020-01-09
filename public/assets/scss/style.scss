@@ -253,7 +253,7 @@ header {
 // BOUTONS
 .btn {
   display: inline-block;
-  padding: 1rem 2.5rem;
+  padding: 1rem 1.7rem;
   border-width: 3px;
   border-style: solid;
   text-decoration: none;
@@ -284,6 +284,9 @@ header {
     border-color: $bleu;
     color: $blancCasse;
     background-color: $bleu;
+    i {
+      margin-right: .3rem;
+    }
   }
 
   &.btn-rouge {

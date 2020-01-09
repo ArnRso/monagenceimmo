@@ -181,7 +181,7 @@ header .responsive {
 
 .btn {
   display: inline-block;
-  padding: 1rem 2.5rem;
+  padding: 1rem 1.7rem;
   border-width: 3px;
   border-style: solid;
   text-decoration: none;
@@ -208,6 +208,9 @@ header .responsive {
   border-color: #2d64A5;
   color: #F5F9FC;
   background-color: #2d64A5;
+}
+.btn.btn-bleu i {
+  margin-right: 0.3rem;
 }
 .btn.btn-rouge {
   border-color: #FF5858;

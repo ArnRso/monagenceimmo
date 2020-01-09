@@ -598,4 +598,20 @@ class Bien
 
         return $this;
     }
+
+    /**
+     * Permet de savoir si un bien est liké par un user
+     * @param User $user
+     * @return bool
+     */
+    public function isLikedByUser(User $user): bool
+    {
+        foreach ($this->getLikedBy() as $like) {
+            if ($like->getId() == $user->getId()) {
+                return true;
+            }
+
+        }
+        return false;
+    }
 }

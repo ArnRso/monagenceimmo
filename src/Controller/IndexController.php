@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Repository\BienRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -30,7 +31,7 @@ class IndexController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $biens = $bienRepository->findBy(["author" => $this->getUser()]);
         return $this->render("profil/profil.html.twig", [
-           'biens' => $biens,
+            'biens' => $biens,
             'active' => 'profil'
         ]);
     }
@@ -42,7 +43,15 @@ class IndexController extends AbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
         // TODO : Injecter les biens favoris !!!
-        $biens = $bienRepository->findBy(["author" => $this->getUser()]);
+        $tousLesbiens = $bienRepository->findBy(["author" => $this->getUser()]);
+        $biens = [];
+
+        foreach ($tousLesbiens as $bien) {
+            if ($bien->isLikedByUser($this->getUser())) {
+                array_push($biens, $bien);
+            }
+        }
+
         return $this->render("profil/profil.html.twig", [
             'biens' => $biens,
             'active' => 'favoris'
