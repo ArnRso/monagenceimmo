@@ -200,6 +200,7 @@
             address = address.split(' ');
             address = address.join('+');
             var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + encodeURI(escape(address)) + "&key=" + apiKey;
+            console.log(address);
             axios.get(url)
                 .then(function (response) {
                     // handle success
