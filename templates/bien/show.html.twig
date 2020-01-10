@@ -196,7 +196,7 @@
         function initMap() {
 
             var apiKey = "AIzaSyA6jy16mTR7Gb9ctCCYelY35TZ__gTHsTA";
-            var address = "{{ bien.numeroRue }} {{ bien.rue }}{% if bien.rueComplement is not null %} {{ bien.rueComplement }}{% endif %} {{ bien.ville }}";
+            var address = "{{ bien.numeroRue }} {{ bien.rue }}{% if bien.rueComplement is not null %} {{ bien.rueComplement }}{% endif %} {{ bien.codePostal }} {{ bien.ville }}";
             address = address.split(' ');
             address = address.join('+');
             var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + encodeURI(escape(address)) + "&key=" + apiKey;
