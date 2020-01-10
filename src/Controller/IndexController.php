@@ -43,7 +43,6 @@ class IndexController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $tousLesbiens = $bienRepository->findAll();
         $biens = [];
-        dump($tousLesbiens);
 
         foreach ($tousLesbiens as $bien) {
             if ($bien->isLikedByUser($this->getUser())) {
@@ -51,7 +50,6 @@ class IndexController extends AbstractController
             }
         }
 
-        dump($biens);
 
         return $this->render("profil/profil.html.twig", [
             'biens' => $biens,
