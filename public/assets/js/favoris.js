@@ -5,7 +5,6 @@ function onClickBtnFavoris(event) {
     const icone = this.querySelector("i");
     axios.get(url)
         .then(function (response) {
-            console.log(response);
             spanFavorisNum.textContent = response.data.favoris;
             if (icone.classList.contains('fas')) {
                 icone.classList.replace('fas', 'far');
