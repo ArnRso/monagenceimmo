@@ -37,7 +37,7 @@
                 <p class="ville">{{ bien.ville }}</p>
                 <p class="prix">{{ bien.prix }} € / mois</p>
                 <div class="btn-container">
-                    <a href="" class="btn btn-pill btn-noir">Partager</a>
+                    <a href="mailto:{{ bien.author.email }}" target="_blank" class="btn btn-pill btn-noir">Contacter le propriétaire</a>
                     <a href="{{ path('bien_favoris', {'id': bien.id}) }}" class="btn btn-pill btn-bleu js-favoris">
                         {% if app.user and bien.isLikedByUser(app.user) %}
                             <i class="fas fa-heart"></i>
