@@ -19,36 +19,39 @@ class BienRepository extends ServiceEntityRepository
         parent::__construct($registry, Bien::class);
     }
 
-    public function simpleSearch($localisation = "", $prixMax = 9999999999999, $surfaceMin = -1, $bonus = '')
-    {
-        $qb = $this->createQueryBuilder('bien');
-        $query = $qb->select('bien')
-            ->where('bien.ville LIKE :ville')
-            ->setParameter('ville', '%' . $localisation . '%')
-            ->andWhere('bien.prix <= :prixMax')
-            ->setParameter('prixMax', intval($prixMax))
-            ->andWhere('bien.surface >= :surfaceMin')
-            ->setParameter('surfaceMin', intval($surfaceMin));
-
-        if ($bonus == 'maison') {
-            $query = $qb->andWhere('bien.type_de_bien = 2');
-        }
-
-        if ($bonus == 'colocation') {
-            $query = $qb->andWhere('bien.colocation = 1');
-        }
-        if ($bonus == 'parking') {
-            $query = $qb->andWhere('bien.parking = 1');
-        }
-        if ($bonus == 'balcon') {
-            $query = $qb->andWhere('bien.balcon = 1');
-        }
-
-
-        $query = $qb->getQuery();
-        $results = $query->getResult();
-        return $results;
+public function simpleSearch($localisation = "", $prixMax = "", $surfaceMin = "", $bonus = "")
+{
+    $qb = $this->createQueryBuilder('bien');
+    $query = $qb->select('bien');
+    if ($localisation != "") {
+        $query = $qb->andWhere('bien.ville LIKE :ville')
+            ->setParameter('ville', '%' . $localisation . '%');
     }
+    if ($prixMax != "") {
+        $query = $qb->andWhere('bien.prix <= :prixMax')
+            ->setParameter('prixMax', intval($prixMax));
+    }
+    if ($surfaceMin != "") {
+        $query = $qb->andWhere('bien.surface >= :surfaceMin')
+            ->setParameter('surfaceMin', intval($surfaceMin));
+    }
+    if ($bonus == 'maison') {
+        $query = $qb->andWhere('bien.type_de_bien = 2');
+    }
+    if ($bonus == 'colocation') {
+        $query = $qb->andWhere('bien.colocation = 1');
+    }
+    if ($bonus == 'parking') {
+        $query = $qb->andWhere('bien.parking = 1');
+    }
+    if ($bonus == 'balcon') {
+        $query = $qb->andWhere('bien.balcon = 1');
+    }
+
+    $query = $qb->getQuery();
+    $results = $query->getResult();
+    return $results;
+}
 
     // /**
     //  * @return Bien[] Returns an array of Bien objects

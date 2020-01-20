@@ -37,7 +37,8 @@
                 <p class="ville">{{ bien.ville }}</p>
                 <p class="prix">{{ bien.prix }} € / mois</p>
                 <div class="btn-container">
-                    <a href="mailto:{{ bien.author.email }}" target="_blank" class="btn btn-pill btn-noir">Contacter le propriétaire</a>
+                    <a href="mailto:{{ bien.author.email }}" target="_blank" class="btn btn-pill btn-noir">Contacter le
+                        propriétaire</a>
                     <a href="{{ path('bien_favoris', {'id': bien.id}) }}" class="btn btn-pill btn-bleu js-favoris">
                         {% if app.user and bien.isLikedByUser(app.user) %}
                             <i class="fas fa-heart"></i>
@@ -45,7 +46,7 @@
                             <i class="far fa-heart"></i>
 
                         {% endif %}
-                        <span class="js-favoris-num">{{ bien.likedby | length }}</span>
+                        <span class="js-favoris-num">{{ bien.likedBy | length }}</span>
                         <span class="js-label">Favoris</span>
 
                     </a>
@@ -229,9 +230,9 @@
     * The key parameter will contain your own API key (which is not needed for this tutorial)
     * The callback parameter executes the initMap() function
     -->
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6jy16mTR7Gb9ctCCYelY35TZ__gTHsTA&callback=initMap">
-    </script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6jy16mTR7Gb9ctCCYelY35TZ__gTHsTA&callback=initMap">
+</script>
     <script src="{{ asset('assets/splide-1.2.5/dist/js/splide.min.js') }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {

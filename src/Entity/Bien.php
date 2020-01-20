@@ -178,10 +178,10 @@ class Bien
      */
     private $images = [];
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="biens")
-     */
-    private $author;
+/**
+ * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="biens")
+ */
+private $author;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="favorites")
@@ -559,17 +559,17 @@ class Bien
         return $this;
     }
 
-    public function getAuthor(): ?User
-    {
-        return $this->author;
-    }
+public function getAuthor(): ?User
+{
+    return $this->author;
+}
 
-    public function setAuthor(?User $author): self
-    {
-        $this->author = $author;
+public function setAuthor(?User $author): self
+{
+    $this->author = $author;
 
-        return $this;
-    }
+    return $this;
+}
 
     /**
      * @return Collection|User[]
@@ -610,7 +610,6 @@ class Bien
             if ($like->getId() == $user->getId()) {
                 return true;
             }
-
         }
         return false;
     }

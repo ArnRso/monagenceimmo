@@ -9,7 +9,7 @@ function onClickBtnFavoris(event) {
             if (icone.classList.contains('fas')) {
                 icone.classList.replace('fas', 'far');
             } else {
-                icone.classList.replace('far','fas');
+                icone.classList.replace('far', 'fas');
             }
         });
 }

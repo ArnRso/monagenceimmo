@@ -1,3 +1,15 @@
+/*
+Small tablets and large smartphones (landscape view)
+*/
+/*
+Small tablets (portrait view)
+*/
+/*
+Tablets and small desktops
+*/
+/*
+Large tablets and desktops
+*/
 * {
   margin: 0;
   padding: 0;
@@ -51,6 +63,8 @@ header {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   background-color: #2d64A5;
 }
@@ -71,7 +85,7 @@ header .left-container {
   align-items: center;
 }
 header .left-container .logo-container {
-  width: 7rem;
+  width: 5rem;
   margin: 1rem;
 }
 @media (max-width: 1200px) {
@@ -121,10 +135,16 @@ header .burger-div {
 @media (max-width: 1200px) {
   header .burger-div {
     margin-right: 2rem;
+    display: -ms-inline-flexbox;
     display: inline-flex;
-    width: 3rem;
-    height: 3rem;
+    width: 2rem;
+    height: 2rem;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
   }
   header .burger-div .slice {
@@ -140,19 +160,34 @@ header .responsive {
   header .responsive {
     position: absolute;
     bottom: 0;
+    -webkit-transform: translateY(99%);
+    -ms-transform: translateY(99%);
     transform: translateY(99%);
     width: 100%;
     background-color: #2d64A5;
     z-index: 9999;
   }
   header .responsive .inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
   }
   header .responsive .inner nav {
+    display: -ms-inline-flexbox;
     display: inline-flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     text-align: center;
   }
@@ -166,6 +201,7 @@ header .responsive {
     text-decoration: underline;
   }
   header .responsive .inner .profil {
+    display: -ms-inline-flexbox;
     display: inline-flex;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -225,7 +261,7 @@ header .responsive {
 
 .register,
 .login {
-  background-color: #F5F9FC;
+  background-color: #c9c9c9;
   background-size: cover;
   background-position: center;
   display: -webkit-box;
@@ -623,7 +659,7 @@ header .responsive {
 .bien-form {
   background-position: center;
   background-size: cover;
-  background-color: #F4F2F2;
+  background-color: #c9c9c9;
 }
 .bien-form .inner {
   background-color: #F5F9FC;
@@ -661,6 +697,8 @@ header .responsive {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 .bien-form .inner form .ligne div {
@@ -853,12 +891,16 @@ header .responsive {
 }
 .bien-form .supprimer a {
   position: absolute;
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
   transform: translateY(-100%);
 }
 @media (max-width: 576px) {
   .bien-form .supprimer a {
     position: initial;
     margin-top: 1rem;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
     transform: translateY(0);
   }
 }
@@ -919,7 +961,7 @@ header .responsive {
   align-items: center;
   width: 6rem;
   padding: 0.6rem;
-  color: #7F8282;
+  color: #b7baba;
   text-decoration: none;
 }
 .profil-page .profil-user .boutons a .image-container {
@@ -960,5 +1002,9 @@ footer {
   background-color: #2d64A5;
   padding: 2rem;
 }
+
+/*
+FIN FOOTER
+*/
 
 /*# sourceMappingURL=style.css.map */

@@ -6,37 +6,37 @@
     <div class="div-center" style="margin-top: 50px">
         {% include '_partials/search_form.html.twig' %}
     </div>
-    <div class="biensContainer index">
-        {% for bien in biens %}
-            <div class="bien">
-                <a href="{{ path("bien_show", {"id": bien.id}) }}">
-                    <div class="thumbnail-container"
-                         style="background-image: url('{{ asset('assets/uploaded_images/' ~ bien.images[0]) }}');">
+<div class="biensContainer index">
+    {% for bien in biens %}
+        <div class="bien">
+            <a href="{{ path("bien_show", {"id": bien.id}) }}">
+                <div class="thumbnail-container"
+                        style="background-image: url('{{ asset('assets/uploaded_images/' ~ bien.images[0]) }}');">
 
-                    </div>
-                </a>
-                <a href="{{ path("bien_show", {"id": bien.id}) }}">
-                    <h2>{{ bien.ville }} {{ bien.codePostal }} - {{ bien.surface }}m²</h2>
-                </a>
-                <h3>{{ bien.prix }}€</h3>
-                <p>{{ bien.description | easyadmin_truncate(150) | raw }}</p>
-                <div class="div-left">
-                    <a href="{{ path('bien_favoris', {'id': bien.id}) }}" class="btn btn-carre btn-bleu js-favoris">
-                        {% if app.user and bien.isLikedByUser(app.user) %}
-                            <i class="fas fa-heart"></i>
-                        {% else %}
-                            <i class="far fa-heart"></i>
-
-                        {% endif %}
-                        <span class="js-favoris-num">{{ bien.likedby | length }}</span>
-                        <span class="js-label">Favoris</span>
-
-                    </a>
-                    <a href="{{ path("bien_show", {"id": bien.id}) }}" class="btn btn-carre btn-rouge">Plus d'infos</a>
                 </div>
+            </a>
+            <a href="{{ path("bien_show", {"id": bien.id}) }}">
+                <h2>{{ bien.ville }} {{ bien.codePostal }} - {{ bien.surface }}m²</h2>
+            </a>
+            <h3>{{ bien.prix }}€</h3>
+            <p>{{ bien.description | easyadmin_truncate(150) | raw }}</p>
+            <div class="div-left">
+                <a href="{{ path('bien_favoris', {'id': bien.id}) }}" class="btn btn-carre btn-bleu js-favoris">
+                    {% if app.user and bien.isLikedByUser(app.user) %}
+                        <i class="fas fa-heart"></i>
+                    {% else %}
+                        <i class="far fa-heart"></i>
+
+                    {% endif %}
+                    <span class="js-favoris-num">{{ bien.likedby | length }}</span>
+                    <span class="js-label">Favoris</span>
+
+                </a>
+                <a href="{{ path("bien_show", {"id": bien.id}) }}" class="btn btn-carre btn-rouge">Plus d'infos</a>
             </div>
-        {% endfor %}
-    </div>
+        </div>
+    {% endfor %}
+</div>
 
 {% endblock %}
 

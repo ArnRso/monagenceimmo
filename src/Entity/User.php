@@ -62,10 +62,10 @@ class User implements UserInterface
      */
     private $phone;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Bien", mappedBy="author")
-     */
-    private $biens;
+/**
+ * @ORM\OneToMany(targetEntity="App\Entity\Bien", mappedBy="author")
+ */
+private $biens;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Bien", inversedBy="likedBy")

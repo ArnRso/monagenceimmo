@@ -18,99 +18,101 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class BienController extends AbstractController
 {
-    /**
-     * @Route("/", name="bien_index", methods={"GET"})
-     * @param BienRepository $bienRepository
-     * @return Response
-     */
-    public function index(BienRepository $bienRepository): Response
-    {
-        return $this->render('bien/index.html.twig', [
-            'biens' => $bienRepository->findAll(),
-        ]);
-    }
+/**
+ * @Route("/", name="bien_index", methods={"GET"})
+ * @param BienRepository $bienRepository
+ * @return Response
+ */
+public function index(BienRepository $bienRepository): Response
+{
+    return $this->render('bien/index.html.twig', [
+        'biens' => $bienRepository->findAll(),
+    ]);
+}
 
-    /**
-     * @Route("/recherche", name="bien_recherche_simple")
-     * @param Request $request
-     * @param BienRepository $bienRepository
-     * @return Response
-     */
-    public function simpleSearch(Request $request, BienRepository $bienRepository): Response
-    {
-        $localisation = $request->query->get('localisation');
-        if (strlen($localisation) == 0) {
-            $localisation = "";
-        }
-        $prixMax = $request->query->get('prixMax');
-        if (strlen($prixMax) == 0) {
-            $prixMax = 9999999999;
-        }
-        $bonus = $request->query->get('bonus');
-        $surfaceMin = $request->query->get('surfaceMin');
-        $biens = $bienRepository->simpleSearch($localisation, $prixMax, $surfaceMin, $bonus);
-        return $this->render('bien/index.html.twig', [
-            'biens' => $biens
-        ]);
+/**
+ * @Route("/recherche", name="bien_recherche_simple")
+ * @param Request $request
+ * @param BienRepository $bienRepository
+ * @return Response
+ */
+public function simpleSearch(Request $request, BienRepository $bienRepository): Response
+{
+    $localisation = $request->query->get('localisation');
+    if (strlen($localisation) == 0) {
+        $localisation = "";
     }
+    $prixMax = $request->query->get('prixMax');
+    if (strlen($prixMax) == 0) {
+        $prixMax = "";
+    }
+    $bonus = $request->query->get('bonus');
+    $surfaceMin = $request->query->get('surfaceMin');
+    $biens = $bienRepository->simpleSearch($localisation, $prixMax, $surfaceMin, $bonus);
+    return $this->render('bien/index.html.twig', [
+        'biens' => $biens
+    ]);
+}
 
     /**
      * @Route("/new", name="bien_new", methods={"GET","POST"})
      * @param Request $request
      * @return Response
      */
-    public function new(Request $request): Response
-    {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-        $bien = new Bien();
-        $form = $this->createForm(BienType::class, $bien);
-        $form->handleRequest($request);
+public function new(Request $request): Response
+{
+    $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+    $bien = new Bien();
+    $form = $this->createForm(BienType::class, $bien);
+    $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            // stock toutes les images envoyées par le formulaire dans $images
-            $images = $request->files->get('bien')['images'];
+    if ($form->isSubmitted() && $form->isValid()) {
+        // stock toutes les images envoyées par le formulaire dans $images
+        $images = $request->files->get('bien')['images'];
+        // boucle sur chacune des images
+        if ($images != null) {
             // boucle sur chacune des images
-            if ($images != null) {
-                // boucle sur chacune des images
-                foreach ($images as $image) {
-                    // stock le dossier de destination défini dans config/services.yaml
-                    $upload_directory = $this->getParameter('uploads_directory');
-                    // génère un nom unique pour chauque photo
-                    $filename = md5(uniqid()) . '.' . $image->guessExtension();
-                    // déplace le fichier dans le dossier désiré
-                    $image->move(
+            foreach ($images as $image) {
+                // stock le dossier de destination défini dans config/services.yaml
+                $upload_directory = $this->getParameter('uploads_directory');
+                // génère un nom unique pour chauque photo
+                $filename = md5(uniqid()) . '.' . $image->guessExtension();
+                // déplace le fichier dans le dossier désiré
+                $image->move(
                     // dossier de destination
-                        $upload_directory,
-                        // nom du fichier
-                        $filename
-                    );
-                    // Ajoute le nom du fichier image à l'array Images dans la BDD
-                    $bien->addImages($filename);
-                }
+                    $upload_directory,
+                    // nom du fichier
+                    $filename
+                );
+                // Ajoute le nom du fichier image à l'array Images dans la BDD
+                $bien->addImages($filename);
             }
-            $bien->setAuthor($this->getUser());
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($bien);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('bien_index');
         }
+        $bien->setAuthor($this->getUser());
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($bien);
+        $entityManager->flush();
 
-        return $this->render('bien/new.html.twig', [
-            'bien' => $bien,
-            'form' => $form->createView(),
-        ]);
+        return $this->redirectToRoute('bien_index');
     }
 
-    /**
-     * @Route("/{id}", name="bien_show", methods={"GET"})
-     */
-    public function show(Bien $bien): Response
-    {
-        return $this->render('bien/show.html.twig', [
-            'bien' => $bien
-        ]);
-    }
+    return $this->render('bien/new.html.twig', [
+        'bien' => $bien,
+        'form' => $form->createView(),
+    ]);
+}
+
+/**
+ * @Route("/{id}", name="bien_show", methods={"GET"})
+ *
+ * Affiche un seul bien, celui dont l'ID est précisé dans la WildCard
+ */
+public function show(Bien $bien): Response
+{
+    return $this->render('bien/show.html.twig', [
+        'bien' => $bien
+    ]);
+}
 
     /**
      * @Route("/{id}/edit", name="bien_edit", methods={"GET","POST"})
@@ -118,42 +120,44 @@ class BienController extends AbstractController
      * @param Bien $bien
      * @return Response
      */
-    public function edit(Request $request, Bien $bien): Response
-    {
-        $form = $this->createForm(BienType::class, $bien);
-        $form->handleRequest($request);
+public function edit(Request $request, Bien $bien): Response
+{
+    if ($bien->getAuthor() == $this->getUser()) {
+            $form = $this->createForm(BienType::class, $bien);
+            $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            // stock toutes les images envoyées par le formulaire dans $images
-            $images = $request->files->get('bien')['images'];
-            if ($images != null) {
-                // boucle sur chacune des images
-                foreach ($images as $image) {
-                    // stock le dossier de destination défini dans config/services.yaml
-                    $upload_directory = $this->getParameter('uploads_directory');
-                    // génère un nom unique pour chauque photo
-                    $filename = md5(uniqid()) . '.' . $image->guessExtension();
-                    // déplace le fichier dans le dossier désiré
-                    $image->move(
-                    // dossier de destination
-                        $upload_directory,
-                        // nom du fichier
-                        $filename
-                    );
-                    // Ajoute le nom du fichier image à l'array Images dans la BDD
-                    $bien->addImages($filename);
+            if ($form->isSubmitted() && $form->isValid()) {
+                // stock toutes les images envoyées par le formulaire dans $images
+                $images = $request->files->get('bien')['images'];
+                if ($images != null) {
+                    // boucle sur chacune des images
+                    foreach ($images as $image) {
+                        // stock le dossier de destination défini dans config/services.yaml
+                        $upload_directory = $this->getParameter('uploads_directory');
+                        // génère un nom unique pour chauque photo
+                        $filename = md5(uniqid()) . '.' . $image->guessExtension();
+                        // déplace le fichier dans le dossier désiré
+                        $image->move(
+                            // dossier de destination
+                            $upload_directory,
+                            // nom du fichier
+                            $filename
+                        );
+                        // Ajoute le nom du fichier image à l'array Images dans la BDD
+                        $bien->addImages($filename);
+                    }
                 }
+
+                $this->getDoctrine()->getManager()->flush();
+
+                return $this->redirectToRoute('bien_index');
             }
 
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('bien_index');
+            return $this->render('bien/edit.html.twig', [
+                'bien' => $bien,
+                'form' => $form->createView(),
+            ]);
         }
-
-        return $this->render('bien/edit.html.twig', [
-            'bien' => $bien,
-            'form' => $form->createView(),
-        ]);
     }
 
     /**
@@ -217,12 +221,14 @@ class BienController extends AbstractController
             $entityManager->persist($bien);
             $entityManager->flush();
 
-            return $this->json([
-                'code' => 200,
-                'message' => 'Retiré des favoris avec succès',
-                'favoris' => count($bien->getLikedBy())
-            ],
-                200);
+            return $this->json(
+                [
+                    'code' => 200,
+                    'message' => 'Retiré des favoris avec succès',
+                    'favoris' => count($bien->getLikedBy())
+                ],
+                200
+            );
         }
 
         $bien->addLikedBy($user);
@@ -234,6 +240,7 @@ class BienController extends AbstractController
                 'message' => 'Ajouté aux favoris avec succès',
                 'favoris' => count($bien->getLikedBy())
             ],
-            200);
+            200
+        );
     }
 }
